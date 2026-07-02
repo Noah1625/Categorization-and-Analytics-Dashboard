@@ -1,0 +1,807 @@
+Date,Description,Amount,Transaction Type,Category,Account Name,Transaction Class,is_weekend,Transaction Code
+2018-01-01,Amazon,11.11,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #PCM7DJ
+2018-01-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #OY0Y38
+2018-01-02,Thai Restaurant,24.22,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #O4KVA1
+2018-01-03,Credit Card Payment,2298.09,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #61QMCJ
+2018-01-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,AMC THEATERS TICKET #RY71ZO
+2018-01-05,American Tavern,25.85,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #VUBYJL
+2018-01-06,Hardware Store,18.45,debit,Home Improvement,Silver Card,Expense,True,MENARDS ROCKFORD #WVI26W
+2018-01-08,Gas Company,45.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #FYGITN
+2018-01-08,Hardware Store,15.38,debit,Home Improvement,Silver Card,Expense,False,LOWE'S STORE 8832 #K9ZFJI
+2018-01-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #XDKKQC
+2018-01-10,Phone Company,89.46,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #A100KF
+2018-01-11,Shell,34.87,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #MB0GH2
+2018-01-11,Grocery Store,43.54,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #CR4ZTV
+2018-01-12,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #5RTS7V
+2018-01-13,Pizza Place,32.91,debit,Fast Food,Platinum Card,Expense,True,TACO BELL #2231 #C7WCOG
+2018-01-13,Amazon,39.05,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #98X4NC
+2018-01-15,Grocery Store,44.19,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #29AFFX
+2018-01-15,American Tavern,64.11,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #TQO5R9
+2018-01-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #GPFIC7
+2018-01-16,Power Company,60.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #KZ5OU0
+2018-01-19,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #NNSB8R
+2018-01-20,Amazon,50.21,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #GMXH6H
+2018-01-22,Credit Card Payment,554.99,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #07TF2I
+2018-01-22,Credit Card Payment,309.81,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #1CEUB9
+2018-01-22,Credit Card Payment,554.99,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #KUXHRN
+2018-01-22,Hardware Store,17.38,debit,Home Improvement,Silver Card,Expense,False,MENARDS ROCKFORD #DAW09H
+2018-01-23,Credit Card Payment,309.81,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #YVQXH1
+2018-01-24,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #S0MZSX
+2018-01-25,Internet Service Provider,69.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #DYK7KT
+2018-01-29,Shell,30.42,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #T7MEAJ
+2018-01-29,Thai Restaurant,25.0,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #XN3HZH
+2018-01-29,Brunch Restaurant,17.62,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #Q3WAXB
+2018-02-01,Grocery Store,27.79,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #HROH6T
+2018-02-01,Amazon,11.11,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #XQQZKT
+2018-02-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #CKCIPJ
+2018-02-02,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #LNLTJC
+2018-02-03,Japanese Restaurant,57.02,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #FDM9JO
+2018-02-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,True,REGAL CINEMAS #4W9OR1
+2018-02-05,Credit Card Payment,145.14,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #IF0KRH
+2018-02-06,Credit Card Payment,154.13,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #CL6MGI
+2018-02-07,Credit Card Payment,154.13,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #EZB1FY
+2018-02-07,Gas Company,65.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #EJZCQ8
+2018-02-09,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,GREAT CLIPS SALON #3SIMCJ
+2018-02-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,SPOTIFY PREMIUM #0PK88M
+2018-02-10,Bojangles,10.66,debit,Fast Food,Platinum Card,Expense,True,MCDONALD'S #18452 #C6BLJR
+2018-02-11,Fancy Restaurant,106.8,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #3V630O
+2018-02-12,Shell,36.47,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #ESBNRH
+2018-02-12,Phone Company,89.52,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #S1WEEN
+2018-02-14,Brewing Company,14.0,debit,Alcohol & Bars,Silver Card,Expense,False,RED LANTERN PUB #ARGN52
+2018-02-15,American Tavern,10.0,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #OED3BZ
+2018-02-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #B9ARIB
+2018-02-16,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #9E6O6U
+2018-02-16,Brunch Restaurant,8.0,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #CA2VDX
+2018-02-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #225YH0
+2018-02-20,Grocery Store,35.95,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #ZOLC2M
+2018-02-20,Mexican Restaurant,23.51,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #RYGS8P
+2018-02-21,Starbucks,2.0,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #YJO7ET
+2018-02-22,Starbucks,4.0,debit,Coffee Shops,Silver Card,Expense,False,SQ *STARBUCKS STORE 1123 #YM2NE0
+2018-02-26,Credit Card Payment,765.37,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #RFWPPL
+2018-02-26,Credit Card Payment,156.11,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #N6VAEB
+2018-02-26,Credit Card Payment,765.37,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #U249IK
+2018-02-26,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #YDMU6B
+2018-02-26,American Tavern,85.52,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #9NM0ZB
+2018-02-26,Gas Station,32.21,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #DY3DJU
+2018-02-27,Credit Card Payment,156.11,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #DRWCCR
+2018-03-01,Grocery Store,32.07,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #GOR1YC
+2018-03-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #9LNHIQ
+2018-03-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #N9SODY
+2018-03-02,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #JX45UK
+2018-03-03,Grocery Store,23.74,debit,Groceries,Silver Card,Expense,True,WALMART SUPERCENTER #3IMQIM
+2018-03-04,Grocery Store,10.69,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #ME0OOU
+2018-03-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,True,REGAL CINEMAS #NM88CW
+2018-03-04,BBQ Restaurant,42.24,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #4K8R9O
+2018-03-05,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #FE0WJG
+2018-03-05,Credit Card Payment,761.59,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #0R7MOY
+2018-03-05,Credit Card Payment,761.59,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #IFWHLP
+2018-03-07,Starbucks,3.5,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #4ZST0O
+2018-03-08,BP,34.9,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #E7WE03
+2018-03-08,Gas Company,52.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #RL2SF5
+2018-03-09,Grocery Store,20.72,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #6KLX9X
+2018-03-09,Grocery Store,5.09,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #1626RO
+2018-03-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,YOUTUBE MUSIC #HHUHMZ
+2018-03-12,Grocery Store,19.35,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #N8RRY4
+2018-03-12,Phone Company,89.52,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #QAOZ9E
+2018-03-13,Amazon,45.75,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #GBQAZS
+2018-03-14,Grocery Store,22.5,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #N2YY2Z
+2018-03-14,Brunch Restaurant,8.49,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #YMUPOB
+2018-03-15,Starbucks,3.5,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #V21XDC
+2018-03-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #R5PHLO
+2018-03-16,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #4V3VAZ
+2018-03-17,Brewing Company,19.5,debit,Alcohol & Bars,Silver Card,Expense,True,MIXOLOGY LOUNGE #U1STLA
+2018-03-17,Pizza Place,23.34,debit,Fast Food,Platinum Card,Expense,True,CHIPOTLE MEXICAN GRILL #786II1
+2018-03-19,Mediterranean Restaurant,36.48,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #4LMXD7
+2018-03-19,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #YN2MDH
+2018-03-20,Amazon,14.97,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #JVJCWD
+2018-03-22,BP,30.55,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #DNYOTC
+2018-03-23,Credit Card Payment,559.91,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #U1SCEV
+2018-03-23,Credit Card Payment,559.91,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #K9BBU3
+2018-03-23,Grocery Store,11.76,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #HZ613U
+2018-03-26,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #KTZYLN
+2018-03-28,Grocery Store,16.06,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #TSPQSM
+2018-03-28,Pizza Place,24.98,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #5OBY6C
+2018-03-29,Steakhouse,17.64,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #KX8KBO
+2018-03-30,Grocery Store,9.09,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #4YW8DW
+2018-03-30,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #J54PM4
+2018-03-31,Belgian Restaurant,38.32,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #MED25G
+2018-03-31,Chili's,24.74,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #393XCJ
+2018-03-31,Greek Restaurant,41.16,debit,Restaurants,Silver Card,Expense,True,OLIVE GARDEN 4452 #M624P8
+2018-04-01,Grocery Store,80.79,debit,Groceries,Platinum Card,Expense,True,JEWEL-OSCO #G0L8JN
+2018-04-01,Brewing Company,59.48,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #78Z36V
+2018-04-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #NVWUL5
+2018-04-02,Credit Card Payment,817.14,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #8U9QRK
+2018-04-02,Credit Card Payment,817.14,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #N4UHNU
+2018-04-02,Grocery Store,82.36,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #A4SFDR
+2018-04-02,Hardware Store,13.89,debit,Home Improvement,Platinum Card,Expense,False,HOME DEPOT 5244 #2AFASQ
+2018-04-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,ZILLOW RENT PORTAL #LVO0RZ
+2018-04-03,Amazon Video,6.41,debit,Movies & DVDs,Platinum Card,Expense,False,FANDANGO MOVIE PURCHASE #TSYUFS
+2018-04-04,Credit Card Payment,363.08,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #10X2IK
+2018-04-04,Credit Card Payment,363.08,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #SHIR8M
+2018-04-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,FANDANGO MOVIE PURCHASE #FVU8LQ
+2018-04-06,Chevron,4.58,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #CS0VLA
+2018-04-06,Tiny Deli,9.76,debit,Restaurants,Platinum Card,Expense,False,CHILI'S GRILL & BAR #ND1WLU
+2018-04-08,Irish Pub,22.0,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #7I198P
+2018-04-09,Blue Sky Market,6.48,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #AMDM4O
+2018-04-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,YOUTUBE MUSIC #OD2MKU
+2018-04-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #O4F8N9
+2018-04-11,Phone Company,89.52,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #NUJWL1
+2018-04-12,Starbucks,7.0,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #5J7U9P
+2018-04-12,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,LOCAL BARBER SHOP #NRDRM8
+2018-04-13,BP,37.98,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #UWP2KN
+2018-04-13,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #HN6E9Z
+2018-04-13,American Tavern,10.66,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #HUMLKR
+2018-04-14,Hardware Store,11.61,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #F2NDQU
+2018-04-14,American Tavern,41.0,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #21AWBW
+2018-04-16,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #VQEFZC
+2018-04-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #20CB6R
+2018-04-18,Power Company,60.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #PH12TN
+2018-04-20,Thai Restaurant,24.22,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #8WSAC0
+2018-04-21,Grocery Store,4.32,debit,Groceries,Silver Card,Expense,True,JEWEL-OSCO #XDRLCG
+2018-04-21,American Tavern,35.15,debit,Restaurants,Silver Card,Expense,True,CHILI'S GRILL & BAR #R4XN55
+2018-04-22,Grocery Store,21.32,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #D9FGJW
+2018-04-23,Hardware Store,42.7,debit,Home Improvement,Silver Card,Expense,False,HOME DEPOT 5244 #JXBQD2
+2018-04-24,Hardware Store,224.7,debit,Home Improvement,Platinum Card,Expense,False,HOME DEPOT 5244 #3TIXPS
+2018-04-24,Amazon,41.34,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #ZIJ53F
+2018-04-25,Hardware Store,210.79,debit,Home Improvement,Silver Card,Expense,False,HOME DEPOT 5244 #38VOVH
+2018-04-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,AT&T INTERNET SERVICE #BAZPCF
+2018-04-26,Credit Card Payment,769.72,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #7PF6HQ
+2018-04-26,Credit Card Payment,1216.94,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #TFOEQU
+2018-04-26,Credit Card Payment,1216.94,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #39REK1
+2018-04-27,Credit Card Payment,769.72,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #DUPO8S
+2018-04-27,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #IFIL2C
+2018-04-28,Grocery Store,22.98,debit,Groceries,Silver Card,Expense,True,TARGET GROCERY #5RSVF3
+2018-04-29,QuikTrip,39.0,debit,Gas & Fuel,Platinum Card,Expense,True,MOBIL FUEL STATION #O1JCS9
+2018-04-29,Grocery Store,51.05,debit,Groceries,Platinum Card,Expense,True,JEWEL-OSCO #RP0UD4
+2018-04-29,Hardware Store,68.47,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #Q7VOG9
+2018-04-30,Grocery Store,5.09,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #ZALVNC
+2018-05-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #ZXT39R
+2018-05-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,ZILLOW RENT PORTAL #QFVK7R
+2018-05-03,Amazon,49.72,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #AHPZZV
+2018-05-04,Grocery Store,42.23,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #FB6GZW
+2018-05-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,REGAL CINEMAS #KPYEC3
+2018-05-05,Bojangles,7.27,debit,Fast Food,Platinum Card,Expense,True,CHIPOTLE MEXICAN GRILL #FM0I4C
+2018-05-05,Pizza Place,20.52,debit,Fast Food,Platinum Card,Expense,True,MCDONALD'S #18452 #OY0I4E
+2018-05-06,Hardware Store,22.37,debit,Home Improvement,Platinum Card,Expense,True,MENARDS ROCKFORD #R1VGER
+2018-05-06,Amazon,117.69,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #A3KOMS
+2018-05-09,Credit Card Payment,601.4,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #NCYRCD
+2018-05-09,Credit Card Payment,601.4,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #M4EEU4
+2018-05-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,SPOTIFY PREMIUM #7PCS62
+2018-05-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #7CLU4Z
+2018-05-10,Phone Company,111.18,debit,Mobile Phone,Checking,Expense,False,T-MOBILE PAYMENT #QMRZG7
+2018-05-11,Grocery Store,57.32,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #PO1QHB
+2018-05-11,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #NSVX7E
+2018-05-11,Mike's Construction Co.,8000.0,debit,Home Improvement,Checking,Expense,False,HOME DEPOT 5244 #NM5VWK
+2018-05-12,Liquor Store,27.77,debit,Alcohol & Bars,Platinum Card,Expense,True,TIPSY TAP BAR & GRILL #TI9V6R
+2018-05-12,Shell,33.3,debit,Gas & Fuel,Platinum Card,Expense,True,CASEY'S GENERAL STORE 6672 #1HQVY6
+2018-05-12,Fancy Restaurant,78.0,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #5Q27U5
+2018-05-14,Grocery Store,67.63,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #G7CXFF
+2018-05-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #MCR37U
+2018-05-17,Barbershop,29.0,debit,Haircut,Silver Card,Expense,False,LOCAL BARBER SHOP #0FK7GG
+2018-05-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #SPVMBI
+2018-05-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #SH2TSW
+2018-05-18,Amazon,6.41,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #NSX42C
+2018-05-19,Credit Card Payment,207.08,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #60CB9O
+2018-05-19,Grocery Store,31.0,debit,Groceries,Silver Card,Expense,True,WALMART SUPERCENTER #YW93SB
+2018-05-19,Greek Restaurant,23.26,debit,Restaurants,Silver Card,Expense,True,CHILI'S GRILL & BAR #RYKM8N
+2018-05-21,Credit Card Payment,283.07,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #YYT9H8
+2018-05-21,Thai Restaurant,26.04,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #U2PUCE
+2018-05-21,Amazon,32.5,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #6P3DH4
+2018-05-22,Credit Card Payment,283.07,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #FGQXRD
+2018-05-24,BP,39.44,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #QQL5Z3
+2018-05-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #FU4L3G
+2018-05-25,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #YDTSR4
+2018-05-28,Movie Theater,9.62,debit,Entertainment,Silver Card,Expense,False,HULU STREAMING SERVICE #NNIM9Z
+2018-05-28,Grocery Store,91.03,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #MINRZQ
+2018-05-29,Movie Theater,20.0,debit,Movies & DVDs,Silver Card,Expense,False,AMC THEATERS TICKET #02TK6Q
+2018-05-29,Movie Theater,6.25,debit,Movies & DVDs,Silver Card,Expense,False,REGAL CINEMAS #38V0W6
+2018-06-01,BP,38.63,debit,Gas & Fuel,Platinum Card,Expense,False,CASEY'S GENERAL STORE 6672 #LEJOAN
+2018-06-01,Grocery Store,6.11,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #EAG1FR
+2018-06-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #MFQUN8
+2018-06-02,Credit Card Payment,235.18,credit,Credit Card Payment,Silver Card,Transfer,True,UNKNOWN MERCHANT #UBFOWT
+2018-06-02,Credit Card Payment,466.36,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #QGM08Z
+2018-06-03,Italian Restaurant,65.81,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #A28VE5
+2018-06-04,Credit Card Payment,235.18,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #Z3TZ7W
+2018-06-04,Grocery Store,24.12,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #8MDMD9
+2018-06-04,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,ZILLOW RENT PORTAL #PPB892
+2018-06-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,FANDANGO MOVIE PURCHASE #LNTU8N
+2018-06-06,Starbucks,4.0,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #VZ0ME6
+2018-06-08,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #UR4L9Z
+2018-06-08,Gas Company,30.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #LXYZFS
+2018-06-09,Chick-Fil-A,16.18,debit,Fast Food,Platinum Card,Expense,True,CHIPOTLE MEXICAN GRILL #6O2DKP
+2018-06-09,Grocery Store,9.56,debit,Groceries,Platinum Card,Expense,True,JEWEL-OSCO #S7LRZ2
+2018-06-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,APPLE MUSIC SUBSCRIPTION #3IWPGO
+2018-06-10,Grocery Store,46.01,debit,Groceries,Platinum Card,Expense,True,JEWEL-OSCO #RGG0F0
+2018-06-12,Grocery Store,12.55,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #KQBCFP
+2018-06-12,Phone Company,89.46,debit,Mobile Phone,Checking,Expense,False,T-MOBILE PAYMENT #SX3NTL
+2018-06-14,Credit Card Payment,283.44,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #LE2TEX
+2018-06-14,Credit Card Payment,283.44,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #X9QQJ3
+2018-06-14,Grocery Store,7.02,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #FGX18L
+2018-06-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #AX6MF1
+2018-06-16,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,True,DUNKIN #34567 #KVNGRL
+2018-06-16,Pizza Place,22.66,debit,Fast Food,Platinum Card,Expense,True,TACO BELL #2231 #WKOQP9
+2018-06-16,Grocery Store,13.9,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #QX1R6P
+2018-06-18,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #0GZWBX
+2018-06-19,Shell,38.52,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #5I87KU
+2018-06-19,Grocery Store,2.69,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #5TXH2R
+2018-06-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #RKYNCB
+2018-06-20,Credit Card Payment,89.45,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #H5SB35
+2018-06-20,Barbershop,30.0,debit,Haircut,Silver Card,Expense,False,LOCAL BARBER SHOP #IWMP75
+2018-06-21,Credit Card Payment,89.45,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #28HAK1
+2018-06-22,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #PX6K2E
+2018-06-23,Brunch Restaurant,8.5,debit,Restaurants,Silver Card,Expense,True,CHILI'S GRILL & BAR #8K2J4T
+2018-06-23,Amazon,74.97,debit,Shopping,Platinum Card,Expense,True,TARGET STORE 1456 #1RMPJX
+2018-06-25,Credit Card Payment,942.76,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #N2EP6X
+2018-06-25,Credit Card Payment,942.76,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #9G5CVE
+2018-06-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #Q1ZYVH
+2018-06-26,Grocery Store,9.62,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #Z6VVW9
+2018-06-27,Starbucks,3.5,debit,Coffee Shops,Silver Card,Expense,False,PEET'S COFFEE ROASTERS #5BZEGC
+2018-06-27,Pizza Place,22.66,debit,Fast Food,Platinum Card,Expense,False,TACO BELL #2231 #LNVM9F
+2018-06-28,Grocery Store,7.57,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #92MWJR
+2018-07-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #O4AZ7N
+2018-07-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #T1P3P8
+2018-07-02,Movie Theater,25.0,debit,Movies & DVDs,Silver Card,Expense,False,AMC THEATERS TICKET #GI4VDM
+2018-07-02,American Tavern,36.44,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #6QA3CT
+2018-07-04,BP,34.48,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #A4VUXL
+2018-07-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,REGAL CINEMAS #H69BB6
+2018-07-05,Grocery Store,44.25,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #PJKPPD
+2018-07-05,Amazon,212.32,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #7KIJR9
+2018-07-06,Amazon Video,6.41,debit,Movies & DVDs,Platinum Card,Expense,False,AMC THEATERS TICKET #HR183U
+2018-07-06,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #173YBI
+2018-07-08,Credit Card Payment,259.87,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #UXIHQJ
+2018-07-09,Credit Card Payment,242.16,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #S06B2U
+2018-07-09,Credit Card Payment,259.87,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #OQ1JGL
+2018-07-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,SPOTIFY PREMIUM #5VT4IE
+2018-07-10,Credit Card Payment,242.16,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #2CXGXX
+2018-07-10,Grocery Store,5.39,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #NW628D
+2018-07-10,Gas Company,30.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #V3FI85
+2018-07-11,Phone Company,89.46,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #X1KL5D
+2018-07-14,Go Mart,33.51,debit,Gas & Fuel,Silver Card,Expense,True,MOBIL FUEL STATION #XJF8UJ
+2018-07-15,Circle K,36.24,debit,Gas & Fuel,Platinum Card,Expense,True,SHELL OIL #RGK7BR
+2018-07-17,Wendy's,15.23,debit,Fast Food,Silver Card,Expense,False,MCDONALD'S #18452 #NVETZ7
+2018-07-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #0XN01L
+2018-07-17,Power Company,60.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #OD45ZI
+2018-07-18,Irish Restaurant,28.54,debit,Alcohol & Bars,Platinum Card,Expense,False,RED LANTERN PUB #19SBWD
+2018-07-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #6TM05M
+2018-07-20,Credit Card Payment,61.43,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #5CKU7V
+2018-07-20,Credit Card Payment,102.88,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #WL6NWK
+2018-07-20,Credit Card Payment,102.88,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #92MCZM
+2018-07-20,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #F05E78
+2018-07-21,Grocery Store,28.93,debit,Groceries,Platinum Card,Expense,True,TARGET GROCERY #ZOFK4G
+2018-07-21,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,True,LOCAL BARBER SHOP #GCZ73U
+2018-07-23,Credit Card Payment,61.43,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #8LXN20
+2018-07-23,Starbucks,9.58,debit,Fast Food,Platinum Card,Expense,False,CHIPOTLE MEXICAN GRILL #SW1RE4
+2018-07-24,American Tavern,26.59,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #FXG7EC
+2018-07-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #MBUBPE
+2018-07-26,Conoco,33.67,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #DM2ATJ
+2018-07-28,Grocery Store,7.61,debit,Groceries,Silver Card,Expense,True,WALMART SUPERCENTER #32NL9R
+2018-07-30,American Tavern,34.38,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #F91J6M
+2018-07-31,Brewing Company,6.6,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #MQBILG
+2018-08-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #KC2ZHL
+2018-08-02,Credit Card Payment,816.27,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #IF395I
+2018-08-02,Shell,40.44,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #18I0W1
+2018-08-02,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #QWKW2U
+2018-08-03,Grocery Store,6.27,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #401RHJ
+2018-08-03,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #NL8VJK
+2018-08-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,True,REGAL CINEMAS #8PCID1
+2018-08-06,Amazon,76.47,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #A3ST9U
+2018-08-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #5MLHV5
+2018-08-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #AFGG8K
+2018-08-10,Phone Company,89.4,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #3QLCGE
+2018-08-11,Chick-Fil-A,13.67,debit,Fast Food,Platinum Card,Expense,True,MCDONALD'S #18452 #GAFYZK
+2018-08-11,Valero,33.66,debit,Gas & Fuel,Platinum Card,Expense,True,SHELL OIL #6QAR1O
+2018-08-15,Credit Card Payment,269.56,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #E0WIU3
+2018-08-15,Credit Card Payment,159.38,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #CAMNJ5
+2018-08-15,Shell,41.07,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #R26OD9
+2018-08-15,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #OKQZWT
+2018-08-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #1NDB3O
+2018-08-16,Credit Card Payment,269.56,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #Y0FZTJ
+2018-08-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #ZGJHEB
+2018-08-17,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #XG8G3G
+2018-08-17,Amazon,14.98,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #TNQPWS
+2018-08-18,Amazon,23.47,debit,Shopping,Platinum Card,Expense,True,TARGET STORE 1456 #ZO3Y7M
+2018-08-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #ZHX1ZC
+2018-08-21,Credit Card Payment,34.18,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #H9D14X
+2018-08-21,Credit Card Payment,99.76,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #BC6AM2
+2018-08-21,Credit Card Payment,99.76,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #35DZRI
+2018-08-22,Credit Card Payment,34.18,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #GX7QYC
+2018-08-24,American Tavern,42.31,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #1AJ9MX
+2018-08-27,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #8WPTU1
+2018-08-30,Shell,35.65,debit,Gas & Fuel,Platinum Card,Expense,False,CASEY'S GENERAL STORE 6672 #F2FKEX
+2018-08-31,Grocery Store,11.64,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #42VL8N
+2018-08-31,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #GTFI8D
+2018-09-01,Brewing Company,47.4,debit,Alcohol & Bars,Platinum Card,Expense,True,TIPSY TAP BAR & GRILL #TI9V14
+2018-09-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #FVQLED
+2018-09-02,Amazon,109.83,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #1TET5X
+2018-09-04,Credit Card Payment,687.29,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #OQJG8C
+2018-09-04,Credit Card Payment,687.29,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #J1RNCQ
+2018-09-04,Mortgage Payment,1247.44,debit,Mortgage & Rent,Checking,Expense,False,ZILLOW RENT PORTAL #J2X171
+2018-09-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,AMC THEATERS TICKET #IB4Z1N
+2018-09-07,Gas Company,30.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #HDZNZN
+2018-09-09,Brewing Company,18.0,debit,Alcohol & Bars,Platinum Card,Expense,True,MIXOLOGY LOUNGE #M7SRQT
+2018-09-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,APPLE MUSIC SUBSCRIPTION #HZ71IK
+2018-09-11,BP,38.86,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #Y6B88M
+2018-09-11,Grocery Store,7.87,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #ZHC5N9
+2018-09-12,Grocery Store,47.16,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #PT1663
+2018-09-12,Phone Company,89.4,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #HNI3MK
+2018-09-13,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #M3L28H
+2018-09-14,Credit Card Payment,134.34,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #HYRWDW
+2018-09-14,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #U9J4ON
+2018-09-17,Grocery Store,10.17,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #LMZH8E
+2018-09-17,Grocery Store,8.8,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #AGCKEP
+2018-09-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #OV43AS
+2018-09-18,Grocery Store,4.32,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #9RU7PI
+2018-09-18,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #HX73F4
+2018-09-19,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #SPX87T
+2018-09-19,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,GREAT CLIPS SALON #GWRI8U
+2018-09-20,Amazon,47.38,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #2R52BY
+2018-09-22,Hardware Store,69.4,debit,Home Improvement,Platinum Card,Expense,True,MENARDS ROCKFORD #QID4XN
+2018-09-22,Hardware Store,6.83,debit,Home Improvement,Platinum Card,Expense,True,MENARDS ROCKFORD #CVAXCA
+2018-09-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #IG50BR
+2018-09-25,Sushi Restaurant,48.64,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #QOPGIZ
+2018-09-26,Starbucks,5.0,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #19T15N
+2018-09-26,Exxon,38.0,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #GSZ31W
+2018-09-27,Valero,40.71,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #XN397H
+2018-09-28,Credit Card Payment,128.12,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #Z65IJ0
+2018-09-28,Credit Card Payment,284.96,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #F33UZ4
+2018-09-28,Credit Card Payment,284.96,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #LJ1NUK
+2018-09-28,Grocery Store,13.36,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #70MZNC
+2018-09-28,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #MNMFDQ
+2018-09-29,Greek Restaurant,23.26,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #RQQC59
+2018-09-29,German Restaurant,46.7,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #F63HVS
+2018-10-01,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #ZXOC3H
+2018-10-01,Credit Card Payment,128.12,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #9GWKO5
+2018-10-01,Grocery Store,15.66,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #Q4QUOI
+2018-10-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #2F3WDK
+2018-10-02,Credit Card Payment,124.03,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #LB541N
+2018-10-02,Credit Card Payment,124.03,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #JZH9GI
+2018-10-02,Mortgage Payment,1209.18,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #3KBGYO
+2018-10-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,AMC THEATERS TICKET #GMO4TY
+2018-10-06,American Tavern,27.0,debit,Restaurants,Silver Card,Expense,True,CHILI'S GRILL & BAR #EI5Z3Q
+2018-10-08,Shell,38.06,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #5R8VVX
+2018-10-08,Hardware Store,80.65,debit,Home Improvement,Silver Card,Expense,False,LOWE'S STORE 8832 #GCNY3S
+2018-10-08,Hardware Store,31.2,debit,Home Improvement,Silver Card,Expense,False,MENARDS ROCKFORD #76D994
+2018-10-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #QVOHVJ
+2018-10-09,Amazon,19.98,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #G6Y03P
+2018-10-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #9CWB8C
+2018-10-10,Grocery Store,53.68,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #HSUXP4
+2018-10-11,Phone Company,89.4,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #8BZBR3
+2018-10-12,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #PX5DIG
+2018-10-16,Power Company,60.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #4WKZX4
+2018-10-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #GSSXXK
+2018-10-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #4VG50A
+2018-10-18,Grocery Store,33.55,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #L01PB5
+2018-10-18,Hardware Store,45.24,debit,Home Improvement,Platinum Card,Expense,False,LOWE'S STORE 8832 #476I3J
+2018-10-18,Brunch Restaurant,8.0,debit,Restaurants,Platinum Card,Expense,False,CHILI'S GRILL & BAR #OID63Z
+2018-10-21,Credit Card Payment,544.37,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #6680FH
+2018-10-22,Credit Card Payment,353.83,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #TG8H0M
+2018-10-22,Credit Card Payment,353.83,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #CQDKP7
+2018-10-22,BP,34.66,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #UX4OIA
+2018-10-23,Grocery Store,7.57,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #5HGTCB
+2018-10-25,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #PK5LM0
+2018-10-25,Amazon,29.98,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #1OSZKE
+2018-10-26,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #21AQE9
+2018-10-27,American Tavern,25.4,debit,Restaurants,Silver Card,Expense,True,OLIVE GARDEN 4452 #ZRI9BW
+2018-10-28,Brewing Company,12.71,debit,Alcohol & Bars,Platinum Card,Expense,True,RED LANTERN PUB #AKIGYR
+2018-10-28,Seafood Restaurant,14.75,debit,Food & Dining,Platinum Card,Expense,True,UNKNOWN MERCHANT #CIT53U
+2018-10-28,Grocery Store,92.49,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #CHW9H9
+2018-10-28,Italian Restaurant,54.0,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #XVVURM
+2018-10-31,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #B90JRB
+2018-11-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #NRVL66
+2018-11-02,Credit Card Payment,262.51,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #SMNVYD
+2018-11-02,Credit Card Payment,262.51,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #MUKDMM
+2018-11-02,Mortgage Payment,1209.18,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #MJ43JY
+2018-11-03,Pizza Place,23.66,debit,Fast Food,Platinum Card,Expense,True,MCDONALD'S #18452 #0OIBOP
+2018-11-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,True,AMC THEATERS TICKET #IKC8JU
+2018-11-05,Shell,36.51,debit,Gas & Fuel,Platinum Card,Expense,False,CASEY'S GENERAL STORE 6672 #M3GE45
+2018-11-06,Amazon,53.95,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #UE2OGK
+2018-11-06,Gas Company,30.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #0IW8QB
+2018-11-08,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #5B0D67
+2018-11-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #61SYJZ
+2018-11-09,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #LBN73F
+2018-11-10,Brewing Company,27.0,debit,Alcohol & Bars,Platinum Card,Expense,True,MIXOLOGY LOUNGE #0W43IY
+2018-11-10,Chick-Fil-A,14.19,debit,Fast Food,Platinum Card,Expense,True,TACO BELL #2231 #8IVTZ4
+2018-11-10,Food Truck,24.4,debit,Groceries,Platinum Card,Expense,True,TARGET GROCERY #GQBKKG
+2018-11-12,Grocery Store,10.18,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #OFGFMT
+2018-11-12,American Tavern,22.33,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #PUU9UR
+2018-11-13,Grocery Store,4.8,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #2DBMTL
+2018-11-13,Grocery Store,37.43,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #GHCQLI
+2018-11-13,Grocery Store,10.15,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #4QXXAC
+2018-11-13,Phone Company,89.54,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #CYOHLQ
+2018-11-14,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #JGZDUA
+2018-11-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #5IDT12
+2018-11-17,Brewing Company,22.8,debit,Alcohol & Bars,Platinum Card,Expense,True,TIPSY TAP BAR & GRILL #P1GLW5
+2018-11-17,Hardware Store,15.47,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #U0X8AG
+2018-11-17,Hardware Store,6.4,debit,Home Improvement,Platinum Card,Expense,True,LOWE'S STORE 8832 #ZU9V88
+2018-11-17,Greek Restaurant,23.26,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #PP5FUX
+2018-11-19,Brewing Company,20.0,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #H1WGCW
+2018-11-19,QuikTrip,29.15,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #349MLR
+2018-11-19,Hardware Store,10.02,debit,Home Improvement,Silver Card,Expense,False,HOME DEPOT 5244 #3LFGN7
+2018-11-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #ESKUMZ
+2018-11-20,Credit Card Payment,421.96,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #SLDL8P
+2018-11-21,Grocery Store,5.64,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #WL7PZ7
+2018-11-21,Hardware Store,37.41,debit,Home Improvement,Platinum Card,Expense,False,MENARDS ROCKFORD #5R2M2W
+2018-11-23,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #54NJ1Q
+2018-11-26,American Tavern,16.8,debit,Alcohol & Bars,Silver Card,Expense,False,MIXOLOGY LOUNGE #SYRKH8
+2018-11-26,Internet Service Provider,74.99,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #AIOU3F
+2018-11-27,Movie Theater,17.0,debit,Movies & DVDs,Silver Card,Expense,False,REGAL CINEMAS #7YE409
+2018-11-27,American Tavern,28.4,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #OYCNHX
+2018-11-29,Credit Card Payment,582.99,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #E1LUAT
+2018-11-29,Credit Card Payment,751.5,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #K57OML
+2018-11-30,Credit Card Payment,582.99,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #9S0T7Q
+2018-11-30,Grocery Store,6.27,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #1ZJF4N
+2018-12-01,Grocery Store,5.64,debit,Groceries,Silver Card,Expense,True,WALMART SUPERCENTER #YT7UUF
+2018-12-01,Brunch Restaurant,8.0,debit,Restaurants,Silver Card,Expense,True,LOCAL DINER PURCHASE #DZWLFV
+2018-12-01,Amazon,13.13,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #KD9HDN
+2018-12-03,BP,30.03,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #FA89DM
+2018-12-03,Grocery Store,148.15,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #JYQOQD
+2018-12-03,Mortgage Payment,1209.18,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #LCGACW
+2018-12-04,Starbucks,3.0,debit,Coffee Shops,Silver Card,Expense,False,SQ *STARBUCKS STORE 1123 #0TUPIO
+2018-12-04,Latin Restaurant,20.65,debit,Fast Food,Platinum Card,Expense,False,MCDONALD'S #18452 #SXSJA5
+2018-12-04,Netflix,11.76,debit,Movies & DVDs,Platinum Card,Expense,False,FANDANGO MOVIE PURCHASE #JHTRK7
+2018-12-06,Grocery Store,21.38,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #6T5YQQ
+2018-12-06,Grocery Store,13.48,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #5S8Z87
+2018-12-06,Gas Company,40.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #RZW5G6
+2018-12-07,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,LOCAL BARBER SHOP #J811UI
+2018-12-07,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #6BHUOD
+2018-12-08,Grocery Store,12.64,debit,Groceries,Platinum Card,Expense,True,TARGET GROCERY #7RS4SU
+2018-12-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,SPOTIFY PREMIUM #MRU5CN
+2018-12-11,Brunch Restaurant,10.29,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #H0TN1V
+2018-12-12,Phone Company,89.54,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #1GBPSR
+2018-12-13,Thai Restaurant,27.0,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #TKRMSE
+2018-12-14,Grocery Store,21.39,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #PTQG4H
+2018-12-14,Hardware Store,17.1,debit,Home Improvement,Silver Card,Expense,False,HOME DEPOT 5244 #N7J8CZ
+2018-12-14,Power Company,60.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #Z80EKX
+2018-12-17,American Tavern,63.0,debit,Food & Dining,Silver Card,Expense,False,UNKNOWN MERCHANT #BDIWTE
+2018-12-17,BP,20.01,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #AGUHOC
+2018-12-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #QKPACC
+2018-12-18,Starbucks,3.0,debit,Coffee Shops,Silver Card,Expense,False,DUNKIN #34567 #VL9CEJ
+2018-12-18,Credit Card Payment,311.02,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #U8CX87
+2018-12-18,Credit Card Payment,311.02,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #HRQQ9V
+2018-12-18,Fancy Restaurant,56.52,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #8YJGZB
+2018-12-18,Amazon,49.99,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #Y6MOU8
+2018-12-18,Amazon,41.72,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #9N66AZ
+2018-12-18,Amazon,24.3,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #P9VM8U
+2018-12-19,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #KVBV6A
+2018-12-19,Amazon,43.01,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #591WWK
+2018-12-20,Credit Card Payment,464.03,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #VMLPAS
+2018-12-20,Shell,30.38,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #P9B608
+2018-12-21,Credit Card Payment,464.03,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #TYDM9X
+2018-12-21,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #SFONYP
+2018-12-22,New York Deli,21.38,debit,Fast Food,Platinum Card,Expense,True,MCDONALD'S #18452 #VKWW5P
+2018-12-22,Hardware Store,22.14,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #4ZMYR7
+2018-12-23,Hardware Store,28.0,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #UPVM7T
+2018-12-24,Hardware Store,38.4,debit,Home Improvement,Platinum Card,Expense,False,HOME DEPOT 5244 #HSKBUQ
+2018-12-26,Chick-Fil-A,56.07,debit,Fast Food,Platinum Card,Expense,False,TACO BELL #2231 #92RGFG
+2018-12-26,Shell,32.47,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #OR8G7C
+2018-12-26,Shell,7.48,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #POJ4V6
+2018-12-26,Internet Service Provider,75.99,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #GGQKYS
+2018-12-26,Amazon,44.99,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #RNRYRN
+2018-12-28,Brewing Company,12.0,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #TI0T0P
+2018-12-29,Brewing Company,14.0,debit,Alcohol & Bars,Silver Card,Expense,True,RED LANTERN PUB #T2BF7E
+2018-12-29,Credit Card Payment,860.05,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #JV2XO4
+2018-12-29,Grocery Store,55.04,debit,Groceries,Silver Card,Expense,True,WALMART SUPERCENTER #08853A
+2019-01-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #S9C8L3
+2019-01-02,Credit Card Payment,499.6,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #2EIY4H
+2019-01-03,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #4QB7BR
+2019-01-03,Amazon,42.1,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #D1T94Y
+2019-01-04,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #D8150J
+2019-01-05,American Tavern,23.49,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #R2PG0I
+2019-01-08,Gas Company,45.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #DVRVI7
+2019-01-09,Credit Card Payment,491.45,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #TK45O7
+2019-01-09,Credit Card Payment,491.45,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #BQ3I8H
+2019-01-09,Credit Card Payment,281.84,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #T2W3FF
+2019-01-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #LLBLOR
+2019-01-10,Grocery Store,58.79,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #N4JCH3
+2019-01-10,Barbershop,30.0,debit,Haircut,Silver Card,Expense,False,LOCAL BARBER SHOP #AZRZU7
+2019-01-10,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,T-MOBILE PAYMENT #5072PD
+2019-01-14,Shell,28.92,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #D030FS
+2019-01-15,Grocery Store,6.06,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #AWBXZL
+2019-01-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #X5A6IC
+2019-01-16,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #AKUHHY
+2019-01-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #XJU8QV
+2019-01-18,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #F44AMP
+2019-01-21,Credit Card Payment,277.99,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #V5O1KT
+2019-01-22,Credit Card Payment,277.99,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #2UUE6Z
+2019-01-24,Grocery Store,21.06,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #UD9IN1
+2019-01-24,Amazon,11.7,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #NSM25J
+2019-01-24,Amazon,4.21,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #AIPZTA
+2019-01-25,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #RF9QHL
+2019-01-31,Credit Card Payment,1900.0,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #DBL8NX
+2019-01-31,Shell,31.32,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #EKOU5X
+2019-02-01,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #5RFWPT
+2019-02-01,Roadside Diner,9.47,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #T3E1VS
+2019-02-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #LO60KT
+2019-02-04,Hardware Store,86.97,debit,Home Improvement,Silver Card,Expense,False,MENARDS ROCKFORD #Z3GOED
+2019-02-04,Netflix,11.76,debit,Television,Platinum Card,Expense,False,HBO MAX BILL #N9S5KD
+2019-02-05,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #XYKPSB
+2019-02-07,Gas Company,65.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #FGEFN2
+2019-02-08,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #JUW74V
+2019-02-08,Thai Restaurant,27.47,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #QVRCDA
+2019-02-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,SPOTIFY PREMIUM #3TMBX5
+2019-02-11,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #LE0T3P
+2019-02-11,Credit Card Payment,133.95,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #5M1OZW
+2019-02-11,BP,24.01,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #LUEYT1
+2019-02-12,Grocery Store,30.54,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #6W7I9Y
+2019-02-12,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,T-MOBILE PAYMENT #MMSE1O
+2019-02-13,Grocery Store,8.21,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #V8JSE7
+2019-02-15,Credit Card Payment,207.47,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #WB310O
+2019-02-15,Credit Card Payment,207.47,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #5OVAPW
+2019-02-15,Grocery Store,4.59,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #IEM60P
+2019-02-15,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #8YGGLM
+2019-02-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #CB8W4M
+2019-02-16,Brewing Company,8.0,debit,Alcohol & Bars,Platinum Card,Expense,True,MIXOLOGY LOUNGE #DRHWEU
+2019-02-16,American Tavern,32.75,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #XZSEF9
+2019-02-16,Amazon,37.45,debit,Shopping,Platinum Card,Expense,True,WALMART ONLINE ORDER #MSZK0B
+2019-02-19,Credit Card Payment,574.84,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #STOGZU
+2019-02-19,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #6PF8UY
+2019-02-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #4Y2U5S
+2019-02-20,Credit Card Payment,292.54,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #1DRH5A
+2019-02-20,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,SPORT CLIPS HAIRCUT #CYNA9K
+2019-02-21,Credit Card Payment,292.54,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #NH37OM
+2019-02-21,Grocery Store,46.96,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #1ZQUD3
+2019-02-25,BP,33.8,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #9Z9I9F
+2019-02-25,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #MV9ZAU
+2019-02-27,Roadside Diner,25.77,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #UTJQ13
+2019-02-28,Grocery Store,32.07,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #PUNKOC
+2019-03-01,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #B35DW4
+2019-03-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #WU2WSF
+2019-03-04,Grocery Store,92.04,debit,Groceries,Silver Card,Expense,False,WALMART SUPERCENTER #ZV2SCC
+2019-03-04,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #8GW898
+2019-03-04,Netflix,11.76,debit,Television,Platinum Card,Expense,False,DISNEY+ MONTHLY #6Y4ERH
+2019-03-05,Fancy Restaurant,7.0,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #YHGJ9K
+2019-03-06,Credit Card Payment,491.86,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #POE7HB
+2019-03-08,BP,34.08,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #MGV8I4
+2019-03-08,Amazon,27.17,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #RKX00O
+2019-03-08,Gas Company,49.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #KL7XZN
+2019-03-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,SPOTIFY PREMIUM #U1U6YN
+2019-03-12,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #TJITQV
+2019-03-12,Bakery Place,3.02,debit,Restaurants,Platinum Card,Expense,False,CHILI'S GRILL & BAR #NEHSNV
+2019-03-13,Credit Card Payment,532.86,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #M0PYWE
+2019-03-13,Credit Card Payment,301.79,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #I76NL9
+2019-03-14,Credit Card Payment,305.27,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #WWO931
+2019-03-14,Credit Card Payment,301.79,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #9UYV9S
+2019-03-14,Brunch Restaurant,8.0,debit,Restaurants,Platinum Card,Expense,False,OLIVE GARDEN 4452 #CKVH0T
+2019-03-15,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #EO6JC4
+2019-03-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #0PU9S7
+2019-03-18,Best Buy,320.99,debit,Electronics & Software,Platinum Card,Expense,False,AMZN MKTPLACE SOFTWARE #ZIGJAA
+2019-03-18,Grocery Store,16.23,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #Z2KGP0
+2019-03-19,Amazon,13.84,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #2EUOM2
+2019-03-19,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #6NWNEZ
+2019-03-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #GJH5EI
+2019-03-22,BP,37.51,debit,Gas & Fuel,Platinum Card,Expense,False,MOBIL FUEL STATION #KUAFPF
+2019-03-23,Starbucks,5.2,debit,Coffee Shops,Platinum Card,Expense,True,SQ *STARBUCKS STORE 1123 #A1FA1I
+2019-03-25,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #PS6XIZ
+2019-03-26,Amazon,16.04,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #XCL7U1
+2019-03-27,Brewing Company,49.63,debit,Alcohol & Bars,Platinum Card,Expense,False,MIXOLOGY LOUNGE #LEVTDW
+2019-03-27,Grocery Store,4.46,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #SHM6BS
+2019-03-29,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #UCGE7J
+2019-03-30,Starbucks,12.84,debit,Coffee Shops,Platinum Card,Expense,True,SQ *STARBUCKS STORE 1123 #J8LEMV
+2019-03-31,Credit Card Payment,957.6,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #S1AY1J
+2019-04-01,Credit Card Payment,1552.65,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #OLJHPF
+2019-04-01,Credit Card Payment,600.51,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #RIC2X7
+2019-04-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #MQ56YD
+2019-04-02,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #A4A6ZE
+2019-04-04,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #G5DCQ5
+2019-04-04,Amazon,35.9,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #DP4PHZ
+2019-04-04,Netflix,11.76,debit,Television,Platinum Card,Expense,False,HBO MAX BILL #R3F1SS
+2019-04-06,Amazon,27.54,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #LETLHF
+2019-04-08,Gas Company,30.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #9NYT16
+2019-04-09,Credit Card Payment,436.75,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #5DJICV
+2019-04-09,Grocery Store,10.7,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #6B8G4S
+2019-04-09,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,SPORT CLIPS HAIRCUT #9EUFLH
+2019-04-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #9TRU0P
+2019-04-10,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #JC2GXS
+2019-04-12,Best Buy,44.93,debit,Electronics & Software,Silver Card,Expense,False,AMZN MKTPLACE SOFTWARE #OIJ54J
+2019-04-12,Grocery Store,41.34,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #CWH9TT
+2019-04-12,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #U3TUF1
+2019-04-13,QuikTrip,38.94,debit,Gas & Fuel,Platinum Card,Expense,True,SHELL OIL #KNH37G
+2019-04-13,Grocery Store,16.87,debit,Groceries,Platinum Card,Expense,True,TARGET GROCERY #84QR3K
+2019-04-13,Vietnamese Restaurant,20.64,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #9WWW82
+2019-04-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #2K9MR5
+2019-04-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #N0PLB4
+2019-04-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,GEICO INSURANCE PAYMENT #BORJK3
+2019-04-18,Credit Card Payment,604.32,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #S8N4MA
+2019-04-18,Credit Card Payment,458.1,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #D3WTBP
+2019-04-19,Credit Card Payment,604.32,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #B31K2Y
+2019-04-19,Grocery Store,10.89,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #801XVN
+2019-04-22,Brewing Company,14.4,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #1PXL8X
+2019-04-22,Greek Restaurant,64.52,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #FPL78Y
+2019-04-23,Hardware Store,29.56,debit,Home Improvement,Silver Card,Expense,False,LOWE'S STORE 8832 #CQCAIJ
+2019-04-25,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,AT&T INTERNET SERVICE #OMVMKQ
+2019-04-26,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #KIEYIM
+2019-04-27,Brewing Company,40.0,debit,Alcohol & Bars,Platinum Card,Expense,True,RED LANTERN PUB #QYMPOI
+2019-04-27,Credit Card Payment,268.96,credit,Credit Card Payment,Silver Card,Transfer,True,UNKNOWN MERCHANT #Z8R6EL
+2019-04-27,American Tavern,14.74,debit,Restaurants,Silver Card,Expense,True,LOCAL DINER PURCHASE #MLUDIO
+2019-04-29,Credit Card Payment,268.96,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #D6NK3X
+2019-04-29,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,JEWEL-OSCO #I6616Y
+2019-04-30,BP,39.08,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #OO7S2Y
+2019-05-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #5NF6NP
+2019-05-02,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #SAH3N0
+2019-05-03,Credit Card Payment,758.07,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #4025GW
+2019-05-04,Netflix,13.9,debit,Television,Platinum Card,Expense,True,DISNEY+ MONTHLY #ENUGOU
+2019-05-06,Amazon,16.94,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #3JAJA5
+2019-05-07,Amazon,38.56,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #Q3EKG3
+2019-05-09,Best Buy,331.69,debit,Electronics & Software,Platinum Card,Expense,False,APPLE.COM/BILL #6Q9LBL
+2019-05-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #A0B359
+2019-05-09,Target,3.2,debit,Shopping,Platinum Card,Expense,False,TARGET STORE 1456 #4AC4CK
+2019-05-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #VTRC1S
+2019-05-10,Best Buy,21.39,debit,Electronics & Software,Silver Card,Expense,False,MICROSOFT*SUBSCRIPTION #VN2I6Q
+2019-05-10,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #3RZYI0
+2019-05-10,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #ZCMFTF
+2019-05-13,Credit Card Payment,480.88,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #ER6UVE
+2019-05-13,QuikTrip,35.24,debit,Gas & Fuel,Silver Card,Expense,False,CASEY'S GENERAL STORE 6672 #YLPRPF
+2019-05-13,Fancy Restaurant,98.19,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #8G3A6C
+2019-05-13,Greek Restaurant,23.11,debit,Restaurants,Silver Card,Expense,False,OLIVE GARDEN 4452 #O3LGDK
+2019-05-14,Grocery Store,2.02,debit,Groceries,Silver Card,Expense,False,TARGET GROCERY #TEY9LK
+2019-05-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #B97WDB
+2019-05-17,Credit Card Payment,575.33,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #P2HA78
+2019-05-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #QVDGQZ
+2019-05-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,PROGRESSIVE INSURANCE #RZNS11
+2019-05-20,Credit Card Payment,415.47,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #FW7XP8
+2019-05-20,American Tavern,32.53,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #A0FQT5
+2019-05-24,Credit Card Payment,765.68,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #LPCAD6
+2019-05-24,Hardware Store,27.96,debit,Home Improvement,Platinum Card,Expense,False,MENARDS ROCKFORD #5108MS
+2019-05-24,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #7UMOJ9
+2019-05-24,Brunch Restaurant,8.0,debit,Restaurants,Platinum Card,Expense,False,CHILI'S GRILL & BAR #T3G0SF
+2019-05-25,QuikTrip,36.76,debit,Gas & Fuel,Platinum Card,Expense,True,MOBIL FUEL STATION #DYILJZ
+2019-05-25,Hardware Store,30.99,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #XYWRJ8
+2019-05-27,Mexican Restaurant,34.33,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #W2W4HA
+2019-05-28,Credit Card Payment,765.68,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #ONU7YY
+2019-05-30,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #IRMWNA
+2019-05-30,American Tavern,34.82,debit,Restaurants,Platinum Card,Expense,False,CHILI'S GRILL & BAR #K5HW6Z
+2019-06-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #8T15AI
+2019-06-03,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #ZE29TL
+2019-06-03,Credit Card Payment,260.95,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #G9BIZC
+2019-06-03,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #V3A4RB
+2019-06-04,Barbershop,30.0,debit,Haircut,Platinum Card,Expense,False,LOCAL BARBER SHOP #UG4P4G
+2019-06-04,Netflix,13.9,debit,Television,Platinum Card,Expense,False,NETFLIX SUBSCRIPTION #5KVVK6
+2019-06-05,Grocery Store,23.0,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #HRWCYO
+2019-06-05,Mexican Restaurant,23.24,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #H9EJMA
+2019-06-06,Starbucks,3.75,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #J489SE
+2019-06-06,Grocery Store,5.64,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #Y5M1BR
+2019-06-07,Credit Card Payment,458.56,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #H0S3IQ
+2019-06-07,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #YPGO69
+2019-06-07,Gas Company,30.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #VF38W2
+2019-06-09,Spotify,10.69,debit,Music,Platinum Card,Expense,True,APPLE MUSIC SUBSCRIPTION #TD46UG
+2019-06-12,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #L7S1N1
+2019-06-13,Credit Card Payment,152.72,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #MSZ70W
+2019-06-13,Credit Card Payment,152.72,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #1POKCB
+2019-06-14,Grocery Store,10.69,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #8M8TSA
+2019-06-15,BP,33.16,debit,Gas & Fuel,Silver Card,Expense,True,CASEY'S GENERAL STORE 6672 #8D89XD
+2019-06-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #JCUU88
+2019-06-17,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #OJUDZW
+2019-06-18,Brewing Company,15.0,debit,Alcohol & Bars,Silver Card,Expense,False,RED LANTERN PUB #H1PU2G
+2019-06-18,Shell,41.83,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #3JK2W6
+2019-06-19,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,STATE FARM AUTO BILL #WQTWUJ
+2019-06-20,Credit Card Payment,375.26,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #ZKU91O
+2019-06-20,Mike's Construction Co.,9200.0,debit,Home Improvement,Checking,Expense,False,HOME DEPOT 5244 #ESTUAY
+2019-06-20,Credit Card Payment,100.68,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #3RQ0B9
+2019-06-21,Credit Card Payment,100.68,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #5OEHHC
+2019-06-21,Biweekly Paycheck,2000.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #H34CU1
+2019-06-24,Brewing Company,15.0,debit,Alcohol & Bars,Silver Card,Expense,False,MIXOLOGY LOUNGE #4WTFIY
+2019-06-28,BP,30.64,debit,Gas & Fuel,Silver Card,Expense,False,MOBIL FUEL STATION #OP25JM
+2019-06-30,Internet Service Provider,75.0,debit,Internet,Checking,Expense,True,CHARTER SPECTRUM #5DQ559
+2019-07-01,Starbucks,7.0,debit,Coffee Shops,Silver Card,Expense,False,PEET'S COFFEE ROASTERS #EKQ4KJ
+2019-07-01,Grocery Store,99.47,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #KKBKTT
+2019-07-01,Hawaiian Grill,24.97,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #B6RXAS
+2019-07-01,Thai Restaurant,24.0,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #RDKYV2
+2019-07-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #1BM8SJ
+2019-07-02,Hardware Store,229.9,debit,Home Improvement,Platinum Card,Expense,False,MENARDS ROCKFORD #1MLG1W
+2019-07-02,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #9JPGJG
+2019-07-04,Netflix,13.9,debit,Television,Platinum Card,Expense,False,DISNEY+ MONTHLY #PLK0LU
+2019-07-05,Brewing Company,19.0,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #0LHCCX
+2019-07-05,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #W9XCJK
+2019-07-06,Credit Card Payment,220.08,credit,Credit Card Payment,Silver Card,Transfer,True,UNKNOWN MERCHANT #4A922T
+2019-07-06,Grocery Store,92.98,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #2TJRM9
+2019-07-06,Greek Restaurant,23.26,debit,Restaurants,Platinum Card,Expense,True,CHILI'S GRILL & BAR #1YFDJ2
+2019-07-07,Hardware Store,103.14,debit,Home Improvement,Platinum Card,Expense,True,LOWE'S STORE 8832 #RXG3JQ
+2019-07-08,Credit Card Payment,305.28,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #M77ASU
+2019-07-08,Credit Card Payment,220.08,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #OHC2H9
+2019-07-09,Credit Card Payment,549.72,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #G573WT
+2019-07-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,YOUTUBE MUSIC #ALSKG7
+2019-07-10,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #XVI2JF
+2019-07-10,Gas Company,30.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #WSBM29
+2019-07-15,Grocery Store,87.14,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #QEDNC5
+2019-07-16,Amazon,89.99,debit,Shopping,Platinum Card,Expense,False,AMAZON.COM PURCHASE #R53YQJ
+2019-07-16,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #ITU300
+2019-07-17,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #BCM9GK
+2019-07-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,STATE FARM AUTO BILL #8Q9DFF
+2019-07-18,Credit Card Payment,814.5,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #KUEUQ0
+2019-07-18,BP,36.42,debit,Gas & Fuel,Silver Card,Expense,False,SHELL OIL #XJWPJ5
+2019-07-18,Grocery Store,29.83,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #88H63A
+2019-07-18,Brunch Restaurant,8.82,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #E78PRN
+2019-07-19,Credit Card Payment,115.52,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #QAIYJS
+2019-07-19,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #7DKCW0
+2019-07-19,Mexican Restaurant,28.0,debit,Restaurants,Platinum Card,Expense,False,LOCAL DINER PURCHASE #ZU996Y
+2019-07-22,Credit Card Payment,257.08,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #5CCR3Q
+2019-07-22,Thai Restaurant,26.67,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #YVGE3Z
+2019-07-23,Credit Card Payment,257.08,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #74U7JR
+2019-07-24,Starbucks,2.5,debit,Coffee Shops,Silver Card,Expense,False,DUNKIN #34567 #A80AID
+2019-07-27,Barbershop,30.0,debit,Haircut,Silver Card,Expense,True,GREAT CLIPS SALON #KUMPP9
+2019-07-28,Hardware Store,44.31,debit,Home Improvement,Platinum Card,Expense,True,HOME DEPOT 5244 #C2LX38
+2019-07-29,Grocery Store,5.35,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #FTQI6W
+2019-07-29,Fancy Restaurant,44.92,debit,Restaurants,Silver Card,Expense,False,LOCAL DINER PURCHASE #YJUHVK
+2019-07-30,Grocery Store,15.77,debit,Groceries,Platinum Card,Expense,False,WALMART SUPERCENTER #CFVOF6
+2019-07-30,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,AT&T INTERNET SERVICE #B93E4S
+2019-08-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #2G4JNP
+2019-08-02,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,APARTMENT RENT PAYMENT #8WRTPL
+2019-08-02,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #BM3FJX
+2019-08-03,BP,36.36,debit,Gas & Fuel,Platinum Card,Expense,True,SHELL OIL #LG2TPP
+2019-08-03,Grocery Store,3.96,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #VHOV8I
+2019-08-03,American Tavern,23.47,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #48PR62
+2019-08-04,Netflix,13.9,debit,Television,Platinum Card,Expense,True,NETFLIX SUBSCRIPTION #L4DWHV
+2019-08-05,Brewing Company,18.0,debit,Alcohol & Bars,Silver Card,Expense,False,TIPSY TAP BAR & GRILL #H4EAE9
+2019-08-05,Credit Card Payment,349.28,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #ZVL657
+2019-08-05,Credit Card Payment,117.65,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #ASG74V
+2019-08-06,Credit Card Payment,521.17,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #91DTQQ
+2019-08-06,Credit Card Payment,117.65,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #E4TYCI
+2019-08-06,Hardware Store,125.0,debit,Home Improvement,Checking,Expense,False,MENARDS ROCKFORD #J0RYVW
+2019-08-08,Grocery Store,11.72,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #BWEDZO
+2019-08-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,SPOTIFY PREMIUM #7R3B2J
+2019-08-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #XL80MC
+2019-08-12,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,VERIZON WIRELESS BILL #Y6IL5L
+2019-08-12,Thai Restaurant,26.67,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #LK35P6
+2019-08-14,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #7KUJLT
+2019-08-15,Credit Card Payment,335.2,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #M3MD9G
+2019-08-15,Power Company,60.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #18I47S
+2019-08-16,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #GID1F1
+2019-08-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,WATER DEPARTMENT PAYMENT #9GPN00
+2019-08-17,Credit Card Payment,87.17,credit,Credit Card Payment,Platinum Card,Transfer,True,UNKNOWN MERCHANT #CH5CZM
+2019-08-17,Grocery Store,33.15,debit,Groceries,Platinum Card,Expense,True,JEWEL-OSCO #1Z21HV
+2019-08-17,Barbershop,19.0,debit,Haircut,Platinum Card,Expense,True,LOCAL BARBER SHOP #RE5XHF
+2019-08-17,American Tavern,3.5,debit,Restaurants,Platinum Card,Expense,True,OLIVE GARDEN 4452 #IL93GI
+2019-08-19,Credit Card Payment,1248.95,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #DFW6GT
+2019-08-20,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,STATE FARM AUTO BILL #5R4MWJ
+2019-08-20,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #D3DU79
+2019-08-21,Shell,34.69,debit,Gas & Fuel,Platinum Card,Expense,False,SHELL OIL #T2P8GK
+2019-08-23,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #LLKBMF
+2019-08-25,Brunch Restaurant,39.43,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #K9LGG6
+2019-08-26,Hardware Store,66.75,debit,Home Improvement,Silver Card,Expense,False,MENARDS ROCKFORD #3NOZA1
+2019-08-29,Starbucks,3.0,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #H59CLH
+2019-08-30,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,DUNKIN #34567 #4TT17J
+2019-08-30,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,COMCAST XFINITY BILL #11CKQ9
+2019-08-30,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #H5N26D
+2019-08-31,Hardware Store,68.04,debit,Home Improvement,Platinum Card,Expense,True,MENARDS ROCKFORD #X4XXII
+2019-08-31,BBQ Restaurant,41.78,debit,Restaurants,Silver Card,Expense,True,CHILI'S GRILL & BAR #K8QIJZ
+2019-09-01,Amazon,13.09,debit,Shopping,Platinum Card,Expense,True,TARGET STORE 1456 #3RQNWS
+2019-09-03,Mortgage Payment,1100.0,debit,Mortgage & Rent,Checking,Expense,False,MORTGAGE LOAN PAYMENT #CLZ96B
+2019-09-03,Fancy Restaurant,41.24,debit,Restaurants,Silver Card,Expense,False,CHILI'S GRILL & BAR #44G955
+2019-09-04,Netflix,13.9,debit,Television,Platinum Card,Expense,False,HBO MAX BILL #G2ZVF0
+2019-09-05,Starbucks,3.75,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #45P9S7
+2019-09-06,Credit Card Payment,1390.37,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #OGRU4J
+2019-09-06,Credit Card Payment,1390.37,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #5O2T1Z
+2019-09-06,Credit Card Payment,502.75,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #QEHX80
+2019-09-07,Brewing Company,12.87,debit,Alcohol & Bars,Platinum Card,Expense,True,RED LANTERN PUB #G34L3I
+2019-09-08,Brewing Company,19.3,debit,Alcohol & Bars,Platinum Card,Expense,True,MIXOLOGY LOUNGE #FDDHS8
+2019-09-09,Shell,28.77,debit,Gas & Fuel,Platinum Card,Expense,False,CASEY'S GENERAL STORE 6672 #9JLF42
+2019-09-09,Grocery Store,65.09,debit,Groceries,Silver Card,Expense,False,JEWEL-OSCO #BQP4B3
+2019-09-09,Hardware Store,26.25,debit,Home Improvement,Silver Card,Expense,False,MENARDS ROCKFORD #PDXSI4
+2019-09-09,Spotify,10.69,debit,Music,Platinum Card,Expense,False,APPLE MUSIC SUBSCRIPTION #ICYAPO
+2019-09-09,Gas Company,30.0,debit,Utilities,Checking,Expense,False,NATURAL GAS SERVICE #FP2QD6
+2019-09-11,Credit Card Payment,360.56,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #8D507T
+2019-09-11,Phone Company,65.0,debit,Mobile Phone,Checking,Expense,False,AT&T MOBILE SERVICE #W7HZFW
+2019-09-12,Credit Card Payment,360.56,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #2MBIW4
+2019-09-13,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #XFNBHQ
+2019-09-13,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #K4ZKM0
+2019-09-14,Grocery Store,46.44,debit,Groceries,Platinum Card,Expense,True,WALMART SUPERCENTER #FX2A0A
+2019-09-15,Amazon,47.66,debit,Shopping,Platinum Card,Expense,True,AMAZON.COM PURCHASE #R8JJ59
+2019-09-16,Credit Card Payment,90.57,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #Y39M50
+2019-09-16,Credit Card Payment,90.57,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #9ZN3OS
+2019-09-16,City Water Charges,35.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #6IMGJQ
+2019-09-17,Credit Card Payment,186.13,credit,Credit Card Payment,Platinum Card,Transfer,False,UNKNOWN MERCHANT #BS3DXR
+2019-09-17,Power Company,60.0,debit,Utilities,Checking,Expense,False,CITY ELECTRIC BILL #T40IPZ
+2019-09-18,State Farm,75.0,debit,Auto Insurance,Checking,Expense,False,STATE FARM AUTO BILL #FN5REW
+2019-09-18,Credit Card Payment,1606.46,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #AMCOUW
+2019-09-19,Brewing Company,40.81,debit,Alcohol & Bars,Platinum Card,Expense,False,TIPSY TAP BAR & GRILL #LUPU4E
+2019-09-19,Starbucks,2.75,debit,Coffee Shops,Platinum Card,Expense,False,SQ *STARBUCKS STORE 1123 #J8D9FT
+2019-09-20,Credit Card Payment,9.43,credit,Credit Card Payment,Silver Card,Transfer,False,UNKNOWN MERCHANT #N90DIQ
+2019-09-22,Seafood Restaurant,131.1,debit,Restaurants,Platinum Card,Expense,True,LOCAL DINER PURCHASE #KX2HQN
+2019-09-23,Credit Card Payment,9.43,debit,Credit Card Payment,Checking,Transfer,False,UNKNOWN MERCHANT #H3W8BX
+2019-09-23,Grocery Store,27.71,debit,Groceries,Platinum Card,Expense,False,TARGET GROCERY #XWZDB0
+2019-09-23,Amazon,24.63,debit,Shopping,Platinum Card,Expense,False,WALMART ONLINE ORDER #4E4QXI
+2019-09-27,Biweekly Paycheck,2250.0,credit,Paycheck,Checking,Income,False,UNKNOWN MERCHANT #IQOPUV
+2019-09-28,BP,33.46,debit,Gas & Fuel,Platinum Card,Expense,True,MOBIL FUEL STATION #EF92JA
+2019-09-28,Sheetz,4.27,debit,Gas & Fuel,Platinum Card,Expense,True,MOBIL FUEL STATION #FKPLA6
+2019-09-30,Starbucks,1.75,debit,Coffee Shops,Platinum Card,Expense,False,PEET'S COFFEE ROASTERS #9SH5SM
+2019-09-30,Internet Service Provider,75.0,debit,Internet,Checking,Expense,False,CHARTER SPECTRUM #PTFRAN
