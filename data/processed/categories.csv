@@ -1,0 +1,23 @@
+category_name,transaction_class,category_id
+Alcohol & Bars,Expense,1
+Auto Insurance,Expense,2
+Coffee Shops,Expense,3
+Credit Card Payment,Transfer,4
+Electronics & Software,Expense,5
+Entertainment,Expense,6
+Fast Food,Expense,7
+Food & Dining,Expense,8
+Gas & Fuel,Expense,9
+Groceries,Expense,10
+Haircut,Expense,11
+Home Improvement,Expense,12
+Internet,Expense,13
+Mobile Phone,Expense,14
+Mortgage & Rent,Expense,15
+Movies & DVDs,Expense,16
+Music,Expense,17
+Paycheck,Income,18
+Restaurants,Expense,19
+Shopping,Expense,20
+Television,Expense,21
+Utilities,Expense,22
