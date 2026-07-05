@@ -1,0 +1,3 @@
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+types-psycopg2==2.9.21.20260518 # type stubs for psycopg2 (editor/type-checking only)
