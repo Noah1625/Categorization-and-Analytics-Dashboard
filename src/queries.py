@@ -96,3 +96,47 @@ def spending_by_category() -> list[tuple[str, float]]:
                 """
             )
             return [(str(name), float(total)) for name, total in cur.fetchall()]
+
+
+def total_spending() -> float:
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT COALESCE(SUM(t.amount), 0)
+                FROM transactions t
+                JOIN categories c
+                    ON t.category_id = c.category_id
+                WHERE c.transaction_class = 'Expense';
+                """
+            )
+
+            total, = cur.fetchone()
+
+            return float(total)
+        
+
+def spending_by_month() -> list[tuple[str, float]]:
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT
+                    TO_CHAR(t.transaction_date, 'YYYY-MM') AS month,
+                    SUM(t.amount) AS total_spending
+                FROM transactions t
+                JOIN categories c
+                    ON t.category_id = c.category_id
+                WHERE c.transaction_class = 'Expense'
+                GROUP BY month
+                ORDER BY month;
+                """
+            )
+
+            return [(str(month), float(total)) for month, total in cur.fetchall()]

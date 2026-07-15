@@ -3,7 +3,7 @@ import sys
 from collections.abc import Callable
 from psycopg2.extensions import connection, cursor
 from db.connection import get_config, get_connection
-from queries import get_categories, get_recent_transactions, spending_by_category
+from queries import get_categories, get_recent_transactions, spending_by_category, spending_by_month, total_spending
 from schema import create_tables
 from seed import seed
 
@@ -41,6 +41,13 @@ def demo() -> None:
     print("\nTotal spending by category (expenses):")
     for name, total in spending_by_category()[:10]:
         print(f"  {name:<24} {total:>12.2f}")
+
+    print("\nTotal spending by month (expenses):")
+    for month, total in spending_by_month():
+        print(f"  {month:<10} {total:>12.2f}")
+
+    print("\nTotal historical spending:")
+    print(f"  ${total_spending():,.2f}")
 
 
 COMMANDS: dict[str, Callable[[], None]] = {
