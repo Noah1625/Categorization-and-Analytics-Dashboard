@@ -114,7 +114,8 @@ def total_spending() -> float:
                 """
             )
 
-            total, = cur.fetchone()
+            result = cur.fetchone()
+            total = result[0] if result is not None else 0.0
 
             return float(total)
         
