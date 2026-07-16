@@ -1,0 +1,20 @@
+{# Stateless counter. The whole widget re-renders itself on each click; the
+   current value rides along in the hidden input so the server keeps no state.
+
+   Each button is its own trigger (so its 'step' is the submitted value), and
+   hx-include pulls in the hidden 'value'. Without hx-include only 'step' posts
+   and the count can never move past ±1. #}
+{% set value = value|default(0, true) %}
+<div id="counter" class="row" style="gap: var(--sp-4);">
+  <input type="hidden" id="counter-value" name="value" value="{{ value }}">
+
+  <button class="btn btn-secondary" name="step" value="-1"
+          hx-post="/demo/counter" hx-target="#counter" hx-swap="outerHTML"
+          hx-include="#counter-value">&minus;</button>
+
+  <span class="kpi-value num" style="min-width: 3ch; text-align: center;">{{ value }}</span>
+
+  <button class="btn btn-primary" name="step" value="1"
+          hx-post="/demo/counter" hx-target="#counter" hx-swap="outerHTML"
+          hx-include="#counter-value">+</button>
+</div>

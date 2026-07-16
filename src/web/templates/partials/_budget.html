@@ -1,0 +1,25 @@
+{# Budget progress widget. Recomputes the bar + colour from the 'spent' value
+   submitted by the range slider. Over-budget turns the bar red. #}
+{% set limit = limit|default(500, true) %}
+{% set spent = spent|default(320, true) %}
+{% set pct = (spent / limit * 100) if limit else 0 %}
+{% set clamped = 100 if pct > 100 else pct %}
+{% set over = spent > limit %}
+<div id="budget" hx-target="this" hx-swap="outerHTML">
+  <div class="progress-row">
+    <span class="muted">Groceries budget</span>
+    <span class="num">
+      ${{ '%.0f'|format(spent) }} / ${{ '%.0f'|format(limit) }}
+      {% if over %}<span class="badge expense">over</span>{% endif %}
+    </span>
+  </div>
+  <div class="progress thick">
+    <div class="bar {{ 'over' if over else 'expense' if pct > 80 else '' }}"
+         style="width: {{ clamped }}%;"></div>
+  </div>
+
+  <input type="hidden" name="limit" value="{{ limit }}">
+  <input class="input" type="range" name="spent" min="0" max="{{ (limit * 1.2)|int }}"
+         value="{{ spent|int }}" style="margin-top: var(--sp-4);"
+         hx-post="/demo/budget" hx-trigger="input changed delay:100ms">
+</div>

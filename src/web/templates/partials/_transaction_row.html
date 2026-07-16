@@ -1,0 +1,10 @@
+{# A single transactions-table row. Returned on its own when a new transaction
+   is added, and prepended to the table body by HTMX. #}
+<tr class="htmx-added">
+  <td class="num faint">{{ t.date }}</td>
+  <td>{{ t.description }}</td>
+  <td><span class="badge {{ t.transaction_class|lower }}">{{ t.category }}</span></td>
+  <td class="amount {{ 'income' if t.transaction_class == 'Income' else 'expense' }}">
+    {{ '+' if t.transaction_class == 'Income' else '−' }}${{ '%.2f'|format(t.amount) }}
+  </td>
+</tr>
