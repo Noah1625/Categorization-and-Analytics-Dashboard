@@ -3,7 +3,7 @@ import sys
 from collections.abc import Callable
 from psycopg2.extensions import connection, cursor
 from db.connection import get_config, get_connection
-from queries import get_categories, get_recent_transactions, spending_by_category, spending_by_month, total_spending
+from queries import budget_vs_actual, get_categories, get_recent_transactions, spending_by_category, spending_by_month, total_spending, budget_vs_actual, net_cash_flow_by_month
 from schema import create_tables
 from seed import seed
 
@@ -48,6 +48,23 @@ def demo() -> None:
 
     print("\nTotal historical spending:")
     print(f"  ${total_spending():,.2f}")
+
+    print("\nBudget vs Actual:")
+    for category, budget, actual, remaining in budget_vs_actual("2018-07"):
+        print(
+            f"{category:<25} | "
+            f"Budget: {budget:>8.2f} | "
+            f"Actual: {actual:>8.2f} | "
+            f"Remaining: {remaining:>8.2f}"
+        )
+
+    print("\nMonthly Cash Flow:")
+    for month, income, expense, net in net_cash_flow_by_month():
+        print(
+            f"{month} | Income: ${income:>8.2f} | "
+            f"Expenses: ${expense:>8.2f} | "
+            f"Net: ${net:>8.2f}"
+        )
 
 
 COMMANDS: dict[str, Callable[[], None]] = {

@@ -141,3 +141,96 @@ def spending_by_month() -> list[tuple[str, float]]:
             )
 
             return [(str(month), float(total)) for month, total in cur.fetchall()]
+        
+
+def budget_vs_actual(month: str) -> list[tuple[str, float, float, float]]:
+    """Compare monthly budgets against actual spending for a given month."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT
+                    c.category_name,
+                    b.monthly_budget,
+                    COALESCE(SUM(t.amount), 0) AS actual_spending,
+                    b.monthly_budget - COALESCE(SUM(t.amount), 0) AS remaining_budget
+                FROM budgets b
+                JOIN categories c
+                    ON b.category_id = c.category_id
+                LEFT JOIN transactions t
+                    ON b.category_id = t.category_id
+                    AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s
+                WHERE c.transaction_class = 'Expense'
+                GROUP BY
+                    c.category_name,
+                    b.monthly_budget
+                ORDER BY c.category_name;
+                """,
+                (month,),
+            )
+
+            return [
+                (
+                    str(category),
+                    float(budget),
+                    float(actual),
+                    float(remaining),
+                )
+                for category, budget, actual, remaining in cur.fetchall()
+            ]
+        
+
+def net_cash_flow_by_month() -> list[tuple[str, float, float, float]]:
+    """Return monthly income, expenses, and net cash flow."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                WITH monthly_totals AS (
+                    SELECT
+                        TO_CHAR(t.transaction_date, 'YYYY-MM') AS month,
+                        SUM(
+                            CASE
+                                WHEN c.transaction_class = 'Income'
+                                THEN t.amount
+                                ELSE 0
+                            END
+                        ) AS total_income,
+                        SUM(
+                            CASE
+                                WHEN c.transaction_class = 'Expense'
+                                THEN t.amount
+                                ELSE 0
+                            END
+                        ) AS total_expense
+                    FROM transactions t
+                    JOIN categories c
+                        ON t.category_id = c.category_id
+                    GROUP BY
+                        TO_CHAR(t.transaction_date, 'YYYY-MM')
+                )
+                SELECT
+                    month,
+                    total_income,
+                    total_expense,
+                    total_income - total_expense AS net_cash_flow
+                FROM monthly_totals
+                ORDER BY month;
+                """
+            )
+
+            return [
+                (
+                    str(month),
+                    float(income),
+                    float(expense),
+                    float(net),
+                )
+                for month, income, expense, net in cur.fetchall()
+            ]
