@@ -3,14 +3,92 @@
 
 {% block content %}
 <div class="section">
+
   <h1>Dashboard</h1>
-  <div class="card">
-    <span class="badge">Coming soon</span>
-    <p style="margin-top: var(--sp-3); max-width: 60ch;">
-      This page will show the headline numbers and charts — KPI tiles, spending
-      by category, monthly cash flow, and budget-vs-actual progress bars, powered
-      by the queries in <code class="mono">queries.py</code>.
-    </p>
+<div class="field">
+  <label>Time Period</label>
+
+  <select class="select">
+
+      <option value="all">
+          All Time
+      </option>
+
+       {% for month in months %}
+      <option value="{{ month }}">
+        {{ month }}
+      </option>
+      {% endfor %}
+
+  </select>
+
+</div>
+
+  <!-- KPI -->
+  <div class="card kpi">
+    <div class="kpi-label">Total Spending</div>
+    <div class="kpi-value">
+      ${{ "%.2f"|format(total_spending) }}
+    </div>
   </div>
+
+
+  <!-- Spending / Budget Card -->
+  <div class="card">
+
+    <div class="card-header">
+      <h2>Spending</h2>
+
+      <div>
+        <button
+          class="btn btn-primary"
+          hx-get="/dashboard/category"
+          hx-target="#spending-card">
+          Categories
+        </button>
+
+        <button
+          class="btn btn-ghost"
+          hx-get="/dashboard/budget"
+          hx-target="#spending-card">
+          Budget
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- HTMX swaps this section -->
+    <div id="spending-card" class="category-chart">
+
+      {% for category, total in category_spending %}
+
+      <div class="category-bar-row">
+
+        <div class="category-name">
+          {{ category }}
+        </div>
+
+
+        <div class="progress">
+          <div
+            class="bar"
+            style="width: {{ (total / category_spending[0][1] * 100)|round }}%">
+          </div>
+        </div>
+
+
+        <div class="category-value">
+          ${{ "%.2f"|format(total) }}
+        </div>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
 </div>
 {% endblock %}

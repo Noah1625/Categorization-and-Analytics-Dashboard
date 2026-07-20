@@ -284,6 +284,20 @@ td.amount.income  { color: var(--c-income); }
 .amount-neg { color: var(--c-expense); }
 .amount-pos { color: var(--c-income); }
 
+/* ---- Bar Chart with scrollable body ------------------------------------------------ */
+.category-chart {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.category-bar-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 90px;
+    gap: var(--sp-2);
+    align-items: center;
+    margin-bottom: var(--sp-2);
+}
+
 /* ---- HTMX niceties ------------------------------------------------------ */
 /* Fade newly-swapped content in. */
 .htmx-added { animation: fadein 0.4s ease; }

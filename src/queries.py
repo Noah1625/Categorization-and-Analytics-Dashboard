@@ -79,46 +79,87 @@ def get_transactions_for_category(category_id: int) -> list[Transaction]:
             ]
 
 
-def spending_by_category() -> list[tuple[str, float]]:
-    """Total spend per expense category (JOIN + GROUP BY), highest first."""
-    conn: connection
-    cur: cursor
-    with get_connection() as conn:
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT c.category_name, SUM(t.amount) AS total
-                FROM transactions t
-                JOIN categories c ON c.category_id = t.category_id
-                WHERE c.transaction_class = 'Expense'
-                GROUP BY c.category_name
-                ORDER BY total DESC;
-                """
-            )
-            return [(str(name), float(total)) for name, total in cur.fetchall()]
+def spending_by_category(month: str | None = None) -> list[tuple[str, float]]:
+    """Total spend per expense category."""
 
-
-def total_spending() -> float:
     conn: connection
     cur: cursor
 
     with get_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT COALESCE(SUM(t.amount), 0)
-                FROM transactions t
-                JOIN categories c
-                    ON t.category_id = c.category_id
-                WHERE c.transaction_class = 'Expense';
-                """
-            )
+
+            if month:
+                cur.execute(
+                    """
+                    SELECT
+                        c.category_name,
+                        SUM(t.amount) AS total
+                    FROM transactions t
+                    JOIN categories c
+                        ON c.category_id = t.category_id
+                    WHERE c.transaction_class = 'Expense'
+                    AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s
+                    GROUP BY c.category_name
+                    ORDER BY total DESC;
+                    """,
+                    (month,),
+                )
+
+            else:
+                cur.execute(
+                    """
+                    SELECT
+                        c.category_name,
+                        SUM(t.amount) AS total
+                    FROM transactions t
+                    JOIN categories c
+                        ON c.category_id = t.category_id
+                    WHERE c.transaction_class = 'Expense'
+                    GROUP BY c.category_name
+                    ORDER BY total DESC;
+                    """
+                )
+
+            return [
+                (str(name), float(total))
+                for name, total in cur.fetchall()
+            ]
+
+
+def total_spending(month: str | None = None) -> float:
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+
+            if month:
+                cur.execute(
+                    """
+                    SELECT COALESCE(SUM(t.amount), 0)
+                    FROM transactions t
+                    JOIN categories c
+                        ON t.category_id = c.category_id
+                    WHERE c.transaction_class = 'Expense'
+                    AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s;
+                    """,
+                    (month,),
+                )
+            else:
+                cur.execute(
+                    """
+                    SELECT COALESCE(SUM(t.amount), 0)
+                    FROM transactions t
+                    JOIN categories c
+                        ON t.category_id = c.category_id
+                    WHERE c.transaction_class = 'Expense';
+                    """
+                )
 
             result = cur.fetchone()
-            total = result[0] if result is not None else 0.0
+            total = result[0] if result else 0.0
 
             return float(total)
-        
 
 def spending_by_month() -> list[tuple[str, float]]:
     conn: connection
@@ -234,3 +275,21 @@ def net_cash_flow_by_month() -> list[tuple[str, float, float, float]]:
                 )
                 for month, income, expense, net in cur.fetchall()
             ]
+        
+def available_months() -> list[str]:
+    """Return months available in transaction history."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT DISTINCT
+                    TO_CHAR(transaction_date, 'YYYY-MM') AS month
+                FROM transactions
+                ORDER BY month;
+                """
+            )
+
+            return [str(month) for (month,) in cur.fetchall()]

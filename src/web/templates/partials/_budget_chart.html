@@ -1,0 +1,31 @@
+{% for category, budget, actual, remaining in budget_data %}
+
+<div class="category-bar-row">
+
+    <div>
+        {{ category }}
+    </div>
+
+    <div class="progress">
+        {% if actual <= budget %}
+            <div 
+                class="bar income"
+                style="width: {{ (actual / budget * 100)|round }}%">
+            </div>
+        {% else %}
+            <div 
+                class="bar expense"
+                style="width: {{ (actual / budget * 100)|round }}%">
+            </div>
+        {% endif %}
+    </div>
+
+    <div>
+        ${{ "%.0f"|format(actual) }}
+        /
+        ${{ "%.0f"|format(budget) }}
+    </div>
+
+</div>
+
+{% endfor %}

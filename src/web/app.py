@@ -15,6 +15,15 @@ from flask import Flask, render_template, request
 
 from web.sample_data import CATEGORIES, TRANSACTIONS, DemoTransaction, add_transaction
 
+from queries import (
+    available_months,
+    total_spending,
+    spending_by_category,
+    spending_by_month,
+    budget_vs_actual,
+    net_cash_flow_by_month,
+)
+
 app = Flask(__name__)
 
 
@@ -27,11 +36,23 @@ def index():
         transactions=TRANSACTIONS,
     )
 
-
 @app.get("/dashboard")
 def dashboard():
-    """Placeholder — graphs, KPIs, and progress bars will live here."""
-    return render_template("dashboard.html")
+
+    months = available_months()
+
+    selected_month = None
+
+    return render_template(
+        "dashboard.html",
+        total_spending=total_spending(selected_month),
+        category_spending=spending_by_category(selected_month),
+        monthly_spending=spending_by_month(),
+        monthly_cash_flow=net_cash_flow_by_month(),
+        months=months,
+    )
+    
+    
 
 
 @app.get("/transactions")
@@ -78,6 +99,15 @@ def demo_add_transaction():
     )
     add_transaction(t)
     return render_template("partials/_transaction_row.html", t=t)
+
+@app.get("/dashboard/budget")
+def dashboard_budget():
+    budget_data = budget_vs_actual("2018-07")
+
+    return render_template(
+        "partials/_budget_chart.html",
+        budget_data=budget_data,
+    )
 
 
 if __name__ == "__main__":
