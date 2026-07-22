@@ -53,7 +53,16 @@ def dashboard():
     )
     
     
+@app.get("/dashboard/filter")
+def dashboard_filter():
 
+    month = request.args.get("month") or None
+
+    return render_template(
+        "partials/_dashboard_content.html",
+        total_spending=total_spending(month),
+        category_spending=spending_by_category(month),
+    )
 
 @app.get("/transactions")
 def transactions():

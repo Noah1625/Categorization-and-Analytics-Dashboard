@@ -1,0 +1,26 @@
+<div class="category-chart">
+
+    {% for category, total in category_spending %}
+
+    <div class="category-bar-row">
+
+        <div class="category-name">
+            {{ category }}
+        </div>
+
+        <div class="progress">
+            <div
+                class="bar"
+                style="width: {{ (total / category_spending[0][1] * 100)|round }}%">
+            </div>
+        </div>
+
+        <div class="category-value">
+            ${{ "%.2f"|format(total) }}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
