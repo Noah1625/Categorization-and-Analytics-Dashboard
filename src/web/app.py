@@ -32,7 +32,9 @@ from queries import (
     create_transaction,
     update_transaction,
     delete_transaction,
+    set_transaction_category,
 )
+from categorize import record_correction, suggest
 
 PAGE_SIZE = 50
 
@@ -123,6 +125,19 @@ def _read_filters(default_start: str | None = None,
     }
 
 
+def _attach_suggestions(rows: list[dict[str, object]]) -> None:
+    """Add a ``suggestion`` to every uncategorized row, in place."""
+    for row in rows:
+        if row.get("category_id") is not None:
+            row["suggestion"] = None
+            continue
+        prediction = suggest(
+            description=str(row.get("description") or ""),
+            transaction_code=None,
+        )
+        row["suggestion"] = prediction if prediction.category_id is not None else None
+
+
 def _list_context(filters: dict[str, object]) -> dict[str, object]:
     """Everything the list partial needs: the page of rows + paging state."""
     page = max(1, int(request.values.get("page", 1) or 1))
@@ -135,6 +150,7 @@ def _list_context(filters: dict[str, object]) -> dict[str, object]:
         offset=(page - 1) * PAGE_SIZE,
         **filters,  # pyright: ignore[reportArgumentType]
     )
+    _attach_suggestions(rows)
     return {
         "transactions": rows,
         "categories": get_categories(),
@@ -172,18 +188,60 @@ def transactions_list():
 def transactions_create():
     """Add a transaction, then re-render the list so it lands in place."""
     form = request.form
+    raw_category = form.get("category_id", "").strip()
+    category_id = int(raw_category) if raw_category else None
+    description = form.get("description", "").strip() or "Untitled"
+    amount = abs(float(form.get("amount", 0) or 0))
+
     create_transaction(
         transaction_date=form.get("transaction_date", "").strip(),
-        amount=abs(float(form.get("amount", 0) or 0)),
-        description=form.get("description", "").strip() or "Untitled",
-        category_id=int(form["category_id"]),
+        amount=amount,
+        description=description,
+        category_id=category_id,
     )
+    # A category picked by hand is a training signal too, not just a correction
+    # of something we got wrong.
+    if category_id is not None:
+        record_correction(
+            description=description,
+            transaction_code=None,
+            category_id=category_id,
+        )
     filters = _read_filters()
     return render_template(
         "partials/_transaction_list.html",
         filters=filters,
         **_list_context(filters),
     )
+
+
+@app.post("/transactions/<int:transaction_id>/categorize")
+def transactions_categorize(transaction_id: int):
+    """Accept a suggested category (or an override), and learn from it."""
+    raw_category = request.form.get("category_id", "").strip()
+    if not raw_category:
+        return "", 400
+
+    if not set_transaction_category(transaction_id, int(raw_category)):
+        t = get_transaction(transaction_id)
+        if t is None:
+            return "", 404
+        _attach_suggestions([t])
+        return render_template("partials/_transaction_item.html", t=t, categories=get_categories()), 403
+
+    t = get_transaction(transaction_id)
+    if t is None:
+        return "", 404
+
+    # Whether they took the suggestion or overrode it, this is the ground truth.
+    record_correction(
+        description=str(t["description"] or ""),
+        transaction_code=None,
+        category_id=int(raw_category),
+        transaction_date=t["transaction_date"],
+    )
+    _attach_suggestions([t])
+    return render_template("partials/_transaction_item.html", t=t, categories=get_categories())
 
 
 @app.get("/transactions/<int:transaction_id>/edit")
@@ -193,7 +251,8 @@ def transactions_edit_form(transaction_id: int):
     if t is None:
         return "", 404
     if not t["is_user_created"]:
-        return render_template("partials/_transaction_item.html", t=t), 403
+        _attach_suggestions([t])
+        return render_template("partials/_transaction_item.html", t=t, categories=get_categories()), 403
     return render_template(
         "partials/_transaction_edit.html", t=t, categories=get_categories()
     )
@@ -205,38 +264,50 @@ def transactions_row(transaction_id: int):
     t = get_transaction(transaction_id)
     if t is None:
         return "", 404
-    return render_template("partials/_transaction_item.html", t=t)
+    _attach_suggestions([t])
+    return render_template("partials/_transaction_item.html", t=t, categories=get_categories())
 
 
 @app.post("/transactions/<int:transaction_id>")
 def transactions_update(transaction_id: int):
     """Save an inline edit and swap the read-only row back in."""
     form = request.form
+    description = form.get("description", "").strip() or "Untitled"
+    amount = abs(float(form.get("amount", 0) or 0))
+    raw_category = form.get("category_id", "").strip()
+    category_id = int(raw_category) if raw_category else None
     update_transaction(
         transaction_id=transaction_id,
         transaction_date=form.get("transaction_date", "").strip(),
-        amount=abs(float(form.get("amount", 0) or 0)),
-        description=form.get("description", "").strip() or "Untitled",
-        category_id=int(form["category_id"]),
+        amount=amount,
+        description=description,
+        category_id=category_id,
     )
     t = get_transaction(transaction_id)
     if t is None:
         return "", 404
-    return render_template("partials/_transaction_item.html", t=t)
+    # An edit that set a category is the strongest signal there is. Clearing
+    # one teaches nothing — the user is saying "not yet", not "not this".
+    if category_id is not None:
+        record_correction(
+            description=description,
+            transaction_code=None,
+            category_id=category_id,
+            transaction_date=t["transaction_date"],
+        )
+    _attach_suggestions([t])
+    return render_template("partials/_transaction_item.html", t=t, categories=get_categories())
 
 
 @app.delete("/transactions/<int:transaction_id>")
 def transactions_delete(transaction_id: int):
-    """Remove a user-created transaction; seeded rows are left alone.
-
-    Returns the whole list rather than an empty row so the count and the pager
-    stay honest after the row goes away.
-    """
+    """Remove a user-created transaction; seeded rows are left alone."""
     if not delete_transaction(transaction_id):
         t = get_transaction(transaction_id)
         if t is None:
             return "", 404
-        return render_template("partials/_transaction_item.html", t=t), 403
+        _attach_suggestions([t])
+        return render_template("partials/_transaction_item.html", t=t, categories=get_categories()), 403
 
     filters = _read_filters()
     return render_template(

@@ -91,8 +91,11 @@
         <input class="input" type="text" name="description" placeholder="Coffee shop" required>
       </div>
       <div class="field">
-        <label>Category</label>
+        <label>Category <span class="faint">(optional)</span></label>
+        {# Blank by default. An uncategorized row lands in the list with a
+           suggestion picker in its category cell. #}
         <select class="select" name="category_id">
+          <option value="" selected></option>
           {% for c in categories %}
           <option value="{{ c.category_id }}">{{ c.category_name }}</option>
           {% endfor %}

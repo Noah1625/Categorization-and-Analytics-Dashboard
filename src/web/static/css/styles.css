@@ -221,6 +221,11 @@ a:hover { text-decoration: underline; }
 .badge.expense  { background: var(--c-expense-soft);  color: var(--c-expense); }
 .badge.transfer { background: var(--c-transfer-soft); color: var(--c-transfer); }
 .badge.warn     { background: var(--c-warn-soft);     color: var(--c-warn); }
+.badge.uncategorized {
+  background: transparent;
+  color: var(--c-text-faint);
+  border: 1px dashed var(--c-border);
+}
 
 /* ---- Buttons ------------------------------------------------------------ */
 .btn {
@@ -244,6 +249,55 @@ a:hover { text-decoration: underline; }
 .btn-danger { background: var(--c-expense); color: #fff; }
 .btn-sm { padding: 4px var(--sp-2); font-size: 0.8rem; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---- Category suggestion ------------------------------------------------
+   Shown in the category cell of an uncategorized row. The chip is a dashed,
+   tentative pill so it never reads as a category the user already chose —
+   accepting it is a deliberate click.
+
+   Both children are scoped under .suggest so they beat the base .btn and
+   .select rules on specificity rather than source order — .btn sets a
+   transparent border and .select sets width:100%, and either one silently
+   undoes this block if it happens to come later in the file.
+*/
+.suggest { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: nowrap; }
+
+.suggest .btn-suggest {
+  padding: 2px 10px;
+  font-size: 0.75rem; font-weight: 600;
+  border-radius: 999px;
+  border: 1px dashed var(--c-primary);
+  background: var(--c-primary-soft);
+  color: var(--c-primary);
+  white-space: nowrap;
+}
+.suggest .btn-suggest:hover {
+  border-style: solid;
+  background: var(--c-primary);
+  color: #fff;
+}
+/* Below the suggest threshold: still offered, but visibly a shrug. */
+.suggest .btn-suggest.low {
+  background: transparent;
+  border-color: var(--c-border);
+  color: var(--c-text-faint);
+}
+.suggest .btn-suggest.low:hover {
+  border-color: var(--c-primary);
+  background: var(--c-primary);
+  color: #fff;
+}
+.suggest .btn-suggest .suggest-conf { opacity: 0.7; font-variant-numeric: tabular-nums; }
+
+/* Fixed width, not auto or 100%: a select sized to its widest option
+   ("Electronics & Software") wraps the cell and makes uncategorized rows
+   twice as tall as categorized ones. */
+.suggest .suggest-pick {
+  padding: 2px var(--sp-2);
+  font-size: 0.75rem;
+  width: 7.5rem; min-width: 0; flex: none;
+  color: var(--c-text-faint);
+}
 
 /* ---- Forms -------------------------------------------------------------- */
 .field { display: flex; flex-direction: column; gap: 6px; }

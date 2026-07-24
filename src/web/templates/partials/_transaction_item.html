@@ -1,9 +1,53 @@
 {# One read-only row of the transactions table. Rows the app created carry
-   Edit/Delete; seeded rows are locked so the demo dataset stays intact. #}
+   Edit/Delete; seeded rows are locked so the demo dataset stays intact.
+
+   An uncategorized row shows the categorizer's guess as a clickable chip
+   instead of a category badge. Clicking accepts the guess; the select beside it
+   overrides. Either answer trains the categorizer. #}
 <tr id="tx-row-{{ t.transaction_id }}" class="htmx-added">
   <td class="num faint">{{ t.transaction_date }}</td>
   <td>{{ t.description }}</td>
-  <td><span class="badge {{ t.transaction_class|lower }}">{{ t.category_name }}</span></td>
+
+  <td>
+    {% if t.category_id %}
+      <span class="badge {{ t.transaction_class|lower }}">{{ t.category_name }}</span>
+    {% else %}
+      {# Accept and override both POST to the same endpoint and swap this single
+         row, so the list doesn't jump under the user. #}
+      <div class="suggest">
+        {% if t.suggestion %}
+          {# Shown however unsure the guess is — the percentage carries that,
+             and a dimmed chip below the suggest threshold makes a weak guess
+             look weak instead of hiding it. #}
+          <button class="btn btn-suggest btn-sm {{ '' if t.suggestion.should_suggest else 'low' }}"
+                  title="Suggested from {{ t.suggestion.source }} — click to accept"
+                  hx-post="{{ url_for('transactions_categorize', transaction_id=t.transaction_id) }}"
+                  hx-vals='{"category_id": "{{ t.suggestion.category_id }}"}'
+                  hx-target="#tx-row-{{ t.transaction_id }}"
+                  hx-swap="outerHTML">
+            {{ t.suggestion.category_name }}
+            <span class="suggest-conf">{{ '%.0f'|format(t.suggestion.confidence * 100) }}%</span>
+          </button>
+        {% else %}
+          <span class="badge uncategorized">Uncategorized</span>
+        {% endif %}
+
+        <select class="select suggest-pick"
+                aria-label="Pick a category"
+                name="category_id"
+                hx-post="{{ url_for('transactions_categorize', transaction_id=t.transaction_id) }}"
+                hx-trigger="change"
+                hx-target="#tx-row-{{ t.transaction_id }}"
+                hx-swap="outerHTML">
+          <option value="" selected>{{ 'or pick…' if t.suggestion else 'Pick a category…' }}</option>
+          {% for c in categories %}
+          <option value="{{ c.category_id }}">{{ c.category_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+  </td>
+
   <td class="amount {{ 'income' if t.transaction_class == 'Income' else 'expense' }}">
     {{ '+' if t.transaction_class == 'Income' else '-' }}${{ '%.2f'|format(t.amount) }}
   </td>

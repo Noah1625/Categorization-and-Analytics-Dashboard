@@ -348,7 +348,7 @@ def search_transactions(
                     c.transaction_class,
                     t.is_user_created
                 FROM transactions t
-                JOIN categories c
+                LEFT JOIN categories c
                     ON c.category_id = t.category_id
                 {where}
                 ORDER BY t.transaction_date DESC, t.transaction_id DESC
@@ -396,7 +396,7 @@ def count_transactions(
                 f"""
                 SELECT COUNT(*)
                 FROM transactions t
-                JOIN categories c
+                LEFT JOIN categories c
                     ON c.category_id = t.category_id
                 {where};
                 """,
@@ -426,7 +426,7 @@ def get_transaction(transaction_id: int) -> dict[str, object] | None:
                     c.transaction_class,
                     t.is_user_created
                 FROM transactions t
-                JOIN categories c
+                LEFT JOIN categories c
                     ON c.category_id = t.category_id
                 WHERE t.transaction_id = %s;
                 """,
@@ -455,34 +455,42 @@ def create_transaction(
     transaction_date: str,
     amount: float,
     description: str,
-    category_id: int,
+    category_id: int | None = None,
 ) -> int:
-    """Insert a user-created transaction and return its new id.
-
-    ``transaction_type`` is derived from the category's class so the caller
-    only has to supply what the form collects.
-    """
+    """Insert a user-created transaction and return its new id."""
     conn: connection
     cur: cursor
 
     with get_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                """
-                INSERT INTO transactions
-                    (transaction_date, amount, description, transaction_type,
-                     category_id, transaction_code, is_user_created)
-                SELECT
-                    %s, %s, %s,
-                    CASE WHEN c.transaction_class = 'Income' THEN 'credit'
-                         ELSE 'debit' END,
-                    c.category_id, NULL, TRUE
-                FROM categories c
-                WHERE c.category_id = %s
-                RETURNING transaction_id;
-                """,
-                (transaction_date, amount, description, category_id),
-            )
+            if category_id is None:
+                cur.execute(
+                    """
+                    INSERT INTO transactions
+                        (transaction_date, amount, description, transaction_type,
+                         category_id, transaction_code, is_user_created)
+                    VALUES (%s, %s, %s, 'debit', NULL, NULL, TRUE)
+                    RETURNING transaction_id;
+                    """,
+                    (transaction_date, amount, description),
+                )
+            else:
+                cur.execute(
+                    """
+                    INSERT INTO transactions
+                        (transaction_date, amount, description, transaction_type,
+                         category_id, transaction_code, is_user_created)
+                    SELECT
+                        %s, %s, %s,
+                        CASE WHEN c.transaction_class = 'Income' THEN 'credit'
+                             ELSE 'debit' END,
+                        c.category_id, NULL, TRUE
+                    FROM categories c
+                    WHERE c.category_id = %s
+                    RETURNING transaction_id;
+                    """,
+                    (transaction_date, amount, description, category_id),
+                )
             result = cur.fetchone()
             if result is None:
                 raise ValueError(f"No category with id {category_id}")
@@ -490,14 +498,8 @@ def create_transaction(
             return int(result[0])
 
 
-def update_transaction(
-    transaction_id: int,
-    transaction_date: str,
-    amount: float,
-    description: str,
-    category_id: int,
-) -> bool:
-    """Update a transaction. Returns False for seeded (read-only) rows."""
+def set_transaction_category(transaction_id: int, category_id: int) -> bool:
+    """Assign a category to one transaction, leaving its other fields alone."""
     conn: connection
     cur: cursor
 
@@ -506,10 +508,7 @@ def update_transaction(
             cur.execute(
                 """
                 UPDATE transactions t
-                SET transaction_date = %s,
-                    amount           = %s,
-                    description      = %s,
-                    category_id      = c.category_id,
+                SET category_id      = c.category_id,
                     transaction_type = CASE
                         WHEN c.transaction_class = 'Income' THEN 'credit'
                         ELSE 'debit' END
@@ -518,8 +517,58 @@ def update_transaction(
                   AND t.is_user_created
                   AND c.category_id = %s;
                 """,
-                (transaction_date, amount, description, transaction_id, category_id),
+                (transaction_id, category_id),
             )
+            changed = cur.rowcount
+            conn.commit()
+            return changed > 0
+
+
+def update_transaction(
+    transaction_id: int,
+    transaction_date: str,
+    amount: float,
+    description: str,
+    category_id: int | None = None,
+) -> bool:
+    """Update a transaction. Returns False for seeded (read-only) rows."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            if category_id is None:
+                cur.execute(
+                    """
+                    UPDATE transactions t
+                    SET transaction_date = %s,
+                        amount           = %s,
+                        description      = %s,
+                        category_id      = NULL,
+                        transaction_type = 'debit'
+                    WHERE t.transaction_id = %s
+                      AND t.is_user_created;
+                    """,
+                    (transaction_date, amount, description, transaction_id),
+                )
+            else:
+                cur.execute(
+                    """
+                    UPDATE transactions t
+                    SET transaction_date = %s,
+                        amount           = %s,
+                        description      = %s,
+                        category_id      = c.category_id,
+                        transaction_type = CASE
+                            WHEN c.transaction_class = 'Income' THEN 'credit'
+                            ELSE 'debit' END
+                    FROM categories c
+                    WHERE t.transaction_id = %s
+                      AND t.is_user_created
+                      AND c.category_id = %s;
+                    """,
+                    (transaction_date, amount, description, transaction_id, category_id),
+                )
             changed = cur.rowcount
             conn.commit()
             return changed > 0

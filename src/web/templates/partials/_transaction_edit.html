@@ -5,7 +5,10 @@
   <td><input class="input" type="date" name="transaction_date" value="{{ t.transaction_date }}"></td>
   <td><input class="input" type="text" name="description" value="{{ t.description }}"></td>
   <td>
+    {# The blank option clears the category, putting the row back in front of
+       the suggestion picker. #}
     <select class="select" name="category_id">
+      <option value="" {{ 'selected' if not t.category_id }}></option>
       {% for c in categories %}
       <option value="{{ c.category_id }}" {{ 'selected' if c.category_id == t.category_id }}>
         {{ c.category_name }}
