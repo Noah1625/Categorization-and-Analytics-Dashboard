@@ -17,5 +17,22 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build: .
+    container_name: analytics_app
+    restart: unless-stopped
+    environment:
+      # Inside the compose network the database is reachable by service name.
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: dashboard
+      POSTGRES_PASSWORD: dashboard
+      POSTGRES_DB: analytics
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:
