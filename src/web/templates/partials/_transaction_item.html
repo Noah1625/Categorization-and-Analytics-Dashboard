@@ -1,0 +1,25 @@
+{# One read-only row of the transactions table. Rows the app created carry
+   Edit/Delete; seeded rows are locked so the demo dataset stays intact. #}
+<tr id="tx-row-{{ t.transaction_id }}" class="htmx-added">
+  <td class="num faint">{{ t.transaction_date }}</td>
+  <td>{{ t.description }}</td>
+  <td><span class="badge {{ t.transaction_class|lower }}">{{ t.category_name }}</span></td>
+  <td class="amount {{ 'income' if t.transaction_class == 'Income' else 'expense' }}">
+    {{ '+' if t.transaction_class == 'Income' else '-' }}${{ '%.2f'|format(t.amount) }}
+  </td>
+  <td style="text-align:right; white-space:nowrap;">
+    {% if t.is_user_created %}
+      <button class="btn btn-ghost btn-sm"
+              hx-get="{{ url_for('transactions_edit_form', transaction_id=t.transaction_id) }}"
+              hx-target="#tx-row-{{ t.transaction_id }}"
+              hx-swap="outerHTML">Edit</button>
+      <button class="btn btn-danger btn-sm"
+              hx-delete="{{ url_for('transactions_delete', transaction_id=t.transaction_id) }}"
+              hx-target="#tx-list"
+              hx-swap="outerHTML"
+              hx-include="#tx-filters">Delete</button>
+    {% else %}
+      <span class="faint" style="font-size: 0.75rem;" title="Seeded from the source data — read only">imported</span>
+    {% endif %}
+  </td>
+</tr>

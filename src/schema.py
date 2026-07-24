@@ -24,8 +24,16 @@ CREATE_STATEMENTS = [
         description      TEXT,
         transaction_type TEXT,
         category_id      INTEGER REFERENCES categories (category_id),
-        transaction_code TEXT
+        transaction_code TEXT,
+        -- TRUE only for rows added through the app. Seeded rows stay FALSE and
+        -- are read-only, so the demo data can't be edited or deleted away.
+        is_user_created  BOOLEAN NOT NULL DEFAULT FALSE
     );
+    """,
+    # Migration for databases created before is_user_created existed.
+    """
+    ALTER TABLE transactions
+        ADD COLUMN IF NOT EXISTS is_user_created BOOLEAN NOT NULL DEFAULT FALSE;
     """,
 ]
 

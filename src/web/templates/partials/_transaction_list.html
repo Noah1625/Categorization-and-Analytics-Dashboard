@@ -1,0 +1,61 @@
+{# The filtered/paged transactions table. Swapped whole (outerHTML) whenever a
+   filter changes, a page is turned, or a transaction is added. #}
+<div class="card" id="tx-list">
+  <div class="card-header">
+    <h3>
+      {{ total }} transaction{{ '' if total == 1 else 's' }}
+    </h3>
+    <span class="faint" style="font-size: 0.85rem;">
+      {% if total %}
+        showing {{ (page - 1) * page_size + 1 }}-{{ [page * page_size, total]|min }}
+      {% endif %}
+    </span>
+  </div>
+
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th style="text-align:right;">Amount</th>
+          <th style="text-align:right;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for t in transactions %}
+          {% include "partials/_transaction_item.html" %}
+        {% else %}
+          <tr>
+            <td colspan="5" class="faint" style="text-align:center; padding: var(--sp-6);">
+              No transactions match these filters.
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if pages > 1 %}
+  <div class="pager">
+    <button class="btn btn-secondary btn-sm"
+            hx-get="{{ url_for('transactions_list') }}"
+            hx-vals='{"page": {{ page - 1 }}}'
+            hx-include="#tx-filters"
+            hx-target="#tx-list"
+            hx-swap="outerHTML"
+            {{ 'disabled' if page <= 1 }}>Previous</button>
+
+    <span class="faint" style="font-size: 0.85rem;">Page {{ page }} of {{ pages }}</span>
+
+    <button class="btn btn-secondary btn-sm"
+            hx-get="{{ url_for('transactions_list') }}"
+            hx-vals='{"page": {{ page + 1 }}}'
+            hx-include="#tx-filters"
+            hx-target="#tx-list"
+            hx-swap="outerHTML"
+            {{ 'disabled' if page >= pages }}>Next</button>
+  </div>
+  {% endif %}
+</div>

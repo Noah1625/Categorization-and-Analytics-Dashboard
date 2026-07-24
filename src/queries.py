@@ -276,6 +276,272 @@ def net_cash_flow_by_month() -> list[tuple[str, float, float, float]]:
                 for month, income, expense, net in cur.fetchall()
             ]
         
+def _transaction_filters(
+    start_date: str | None,
+    end_date: str | None,
+    category_ids: list[int] | None,
+    min_amount: float | None,
+    max_amount: float | None,
+    search: str | None,
+) -> tuple[str, list[object]]:
+    """Build the shared WHERE clause for the transactions list + its count.
+
+    Returns the SQL (starting with WHERE, or empty when nothing is filtered)
+    and the matching parameter list. Values always go in as placeholders.
+    """
+    clauses: list[str] = []
+    params: list[object] = []
+
+    if start_date:
+        clauses.append("t.transaction_date >= %s")
+        params.append(start_date)
+    if end_date:
+        clauses.append("t.transaction_date <= %s")
+        params.append(end_date)
+    if category_ids:
+        clauses.append("t.category_id = ANY(%s)")
+        params.append(category_ids)
+    if min_amount is not None:
+        clauses.append("t.amount >= %s")
+        params.append(min_amount)
+    if max_amount is not None:
+        clauses.append("t.amount <= %s")
+        params.append(max_amount)
+    if search:
+        clauses.append("(t.description ILIKE %s OR t.transaction_code ILIKE %s)")
+        params.extend([f"%{search}%", f"%{search}%"])
+
+    where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+    return where, params
+
+
+def search_transactions(
+    start_date: str | None = None,
+    end_date: str | None = None,
+    category_ids: list[int] | None = None,
+    min_amount: float | None = None,
+    max_amount: float | None = None,
+    search: str | None = None,
+    limit: int = 50,
+    offset: int = 0,
+) -> list[dict[str, object]]:
+    """Return one page of transactions matching the filters, newest first."""
+    conn: connection
+    cur: cursor
+
+    where, params = _transaction_filters(
+        start_date, end_date, category_ids, min_amount, max_amount, search
+    )
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"""
+                SELECT
+                    t.transaction_id,
+                    t.transaction_date,
+                    t.amount,
+                    t.description,
+                    t.transaction_type,
+                    t.category_id,
+                    c.category_name,
+                    c.transaction_class,
+                    t.is_user_created
+                FROM transactions t
+                JOIN categories c
+                    ON c.category_id = t.category_id
+                {where}
+                ORDER BY t.transaction_date DESC, t.transaction_id DESC
+                LIMIT %s OFFSET %s;
+                """,
+                (*params, limit, offset),
+            )
+
+            return [
+                {
+                    "transaction_id": tid,
+                    "transaction_date": str(date),
+                    "amount": float(amount),
+                    "description": desc,
+                    "transaction_type": ttype,
+                    "category_id": cid,
+                    "category_name": cname,
+                    "transaction_class": cclass,
+                    "is_user_created": bool(user_created),
+                }
+                for tid, date, amount, desc, ttype, cid, cname, cclass, user_created
+                in cur.fetchall()
+            ]
+
+
+def count_transactions(
+    start_date: str | None = None,
+    end_date: str | None = None,
+    category_ids: list[int] | None = None,
+    min_amount: float | None = None,
+    max_amount: float | None = None,
+    search: str | None = None,
+) -> int:
+    """Total number of transactions matching the filters (drives pagination)."""
+    conn: connection
+    cur: cursor
+
+    where, params = _transaction_filters(
+        start_date, end_date, category_ids, min_amount, max_amount, search
+    )
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"""
+                SELECT COUNT(*)
+                FROM transactions t
+                JOIN categories c
+                    ON c.category_id = t.category_id
+                {where};
+                """,
+                tuple(params),
+            )
+            result = cur.fetchone()
+            return int(result[0]) if result else 0
+
+
+def get_transaction(transaction_id: int) -> dict[str, object] | None:
+    """Return a single transaction (with its category), or None if missing."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT
+                    t.transaction_id,
+                    t.transaction_date,
+                    t.amount,
+                    t.description,
+                    t.transaction_type,
+                    t.category_id,
+                    c.category_name,
+                    c.transaction_class,
+                    t.is_user_created
+                FROM transactions t
+                JOIN categories c
+                    ON c.category_id = t.category_id
+                WHERE t.transaction_id = %s;
+                """,
+                (transaction_id,),
+            )
+            row = cur.fetchone()
+
+    if row is None:
+        return None
+
+    tid, date, amount, desc, ttype, cid, cname, cclass, user_created = row
+    return {
+        "transaction_id": tid,
+        "transaction_date": str(date),
+        "amount": float(amount),
+        "description": desc,
+        "transaction_type": ttype,
+        "category_id": cid,
+        "category_name": cname,
+        "transaction_class": cclass,
+        "is_user_created": bool(user_created),
+    }
+
+
+def create_transaction(
+    transaction_date: str,
+    amount: float,
+    description: str,
+    category_id: int,
+) -> int:
+    """Insert a user-created transaction and return its new id.
+
+    ``transaction_type`` is derived from the category's class so the caller
+    only has to supply what the form collects.
+    """
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                INSERT INTO transactions
+                    (transaction_date, amount, description, transaction_type,
+                     category_id, transaction_code, is_user_created)
+                SELECT
+                    %s, %s, %s,
+                    CASE WHEN c.transaction_class = 'Income' THEN 'credit'
+                         ELSE 'debit' END,
+                    c.category_id, NULL, TRUE
+                FROM categories c
+                WHERE c.category_id = %s
+                RETURNING transaction_id;
+                """,
+                (transaction_date, amount, description, category_id),
+            )
+            result = cur.fetchone()
+            if result is None:
+                raise ValueError(f"No category with id {category_id}")
+            conn.commit()
+            return int(result[0])
+
+
+def update_transaction(
+    transaction_id: int,
+    transaction_date: str,
+    amount: float,
+    description: str,
+    category_id: int,
+) -> bool:
+    """Update a transaction. Returns False for seeded (read-only) rows."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE transactions t
+                SET transaction_date = %s,
+                    amount           = %s,
+                    description      = %s,
+                    category_id      = c.category_id,
+                    transaction_type = CASE
+                        WHEN c.transaction_class = 'Income' THEN 'credit'
+                        ELSE 'debit' END
+                FROM categories c
+                WHERE t.transaction_id = %s
+                  AND t.is_user_created
+                  AND c.category_id = %s;
+                """,
+                (transaction_date, amount, description, transaction_id, category_id),
+            )
+            changed = cur.rowcount
+            conn.commit()
+            return changed > 0
+
+
+def delete_transaction(transaction_id: int) -> bool:
+    """Delete a transaction. Returns False for seeded (read-only) rows."""
+    conn: connection
+    cur: cursor
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "DELETE FROM transactions "
+                "WHERE transaction_id = %s AND is_user_created;",
+                (transaction_id,),
+            )
+            changed = cur.rowcount
+            conn.commit()
+            return changed > 0
+
+
 def available_months() -> list[str]:
     """Return months available in transaction history."""
     conn: connection

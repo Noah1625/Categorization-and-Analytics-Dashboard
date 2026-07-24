@@ -1,0 +1,31 @@
+{# The same row, swapped into an inline edit form. There's no <form> element —
+   a form can't legally wrap <td>s — so Save gathers the inputs with
+   hx-include="closest tr" instead. #}
+<tr id="tx-row-{{ t.transaction_id }}" class="editing">
+  <td><input class="input" type="date" name="transaction_date" value="{{ t.transaction_date }}"></td>
+  <td><input class="input" type="text" name="description" value="{{ t.description }}"></td>
+  <td>
+    <select class="select" name="category_id">
+      {% for c in categories %}
+      <option value="{{ c.category_id }}" {{ 'selected' if c.category_id == t.category_id }}>
+        {{ c.category_name }}
+      </option>
+      {% endfor %}
+    </select>
+  </td>
+  <td>
+    <input class="input" type="number" name="amount" step="0.01" min="0"
+           value="{{ '%.2f'|format(t.amount) }}" style="text-align:right;">
+  </td>
+  <td style="text-align:right; white-space:nowrap;">
+    <button class="btn btn-primary btn-sm"
+            hx-post="{{ url_for('transactions_update', transaction_id=t.transaction_id) }}"
+            hx-include="closest tr"
+            hx-target="#tx-row-{{ t.transaction_id }}"
+            hx-swap="outerHTML">Save</button>
+    <button class="btn btn-ghost btn-sm"
+            hx-get="{{ url_for('transactions_row', transaction_id=t.transaction_id) }}"
+            hx-target="#tx-row-{{ t.transaction_id }}"
+            hx-swap="outerHTML">Cancel</button>
+  </td>
+</tr>

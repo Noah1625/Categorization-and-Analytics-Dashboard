@@ -22,17 +22,38 @@ Then open <http://127.0.0.1:5000/>.
 
 ```
 web/
-  app.py                 # Flask routes: the page + HTMX fragment endpoints
-  sample_data.py         # In-memory demo data (swap for queries.py later)
+  app.py                 # Flask routes: the pages + HTMX fragment endpoints
+  sample_data.py         # In-memory demo data (component page only)
   static/css/styles.css  # The design system — tokens + components
   templates/
     base.html            # Layout, nav, loads HTMX + the stylesheet
     index.html           # The component showcase
+    dashboard.html       # The dashboard
+    transactions.html    # Filters + add form + the list
     partials/            # HTML fragments returned to HTMX
       _counter.html
       _budget.html
-      _transaction_row.html
+      _transaction_row.html    # component-page demo row
+      _transaction_list.html   # the filtered/paged table
+      _transaction_item.html   # one read-only row
+      _transaction_edit.html   # one row, inline edit form
 ```
+
+## Transactions
+
+The list is backed by `queries.search_transactions` / `count_transactions`,
+which share one WHERE builder so the rows and the total always agree. Filters
+live in `#tx-filters`; the add form, the pager, and Delete all `hx-include` it
+so whatever comes back is filtered the same way.
+
+Only rows the app created can be edited or deleted — `transactions.is_user_created`
+is `TRUE` on insert and `FALSE` for everything `seed.py` loads. The guard is in
+the SQL (`AND is_user_created`), not just the template, so a hand-made request
+can't touch the source data either; those routes answer `403` and re-render the
+row untouched.
+
+The date range defaults to the newest month that has data rather than today's
+month, since the dataset is historical — see `_default_range()` in `app.py`.
 
 ## The design system
 

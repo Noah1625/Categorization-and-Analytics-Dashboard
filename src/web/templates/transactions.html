@@ -4,13 +4,111 @@
 {% block content %}
 <div class="section">
   <h1>Transactions</h1>
-  <div class="card">
-    <span class="badge">Coming soon</span>
-    <p style="margin-top: var(--sp-3); max-width: 60ch;">
-      This page will list every transaction with a form to add new ones, and
-      eventually an auto-categorizer that suggests a category from the
-      description.
-    </p>
+
+  <!-- ===================== Filters =====================================
+       Every control in this form triggers a GET to /transactions/list and
+       swaps the result over #tx-list. The add form and the pager pull their
+       values back out of here with hx-include, so the list stays consistent.
+  -->
+  <div class="card" style="margin-bottom: var(--sp-4);">
+    <div class="card-header">
+      <h3>Filters</h3>
+      <a href="{{ url_for('transactions') }}" class="btn btn-ghost btn-sm">Reset</a>
+    </div>
+
+    <form id="tx-filters"
+          hx-get="{{ url_for('transactions_list') }}"
+          hx-target="#tx-list"
+          hx-swap="outerHTML"
+          hx-trigger="change, keyup changed delay:400ms, submit"
+          onsubmit="return false;">
+
+      <div class="grid cols-3" style="margin-bottom: var(--sp-4);">
+        <div class="field">
+          <label>From</label>
+          <input class="input" type="date" name="start_date" value="{{ filters.start_date or '' }}">
+        </div>
+        <div class="field">
+          <label>To</label>
+          <input class="input" type="date" name="end_date" value="{{ filters.end_date or '' }}">
+        </div>
+        <div class="field">
+          <label>Description / code</label>
+          <input class="input" type="text" name="search" placeholder="e.g. Amazon"
+                 value="{{ filters.search or '' }}">
+        </div>
+        <div class="field">
+          <label>Min amount</label>
+          <input class="input" type="number" name="min_amount" step="0.01" min="0"
+                 placeholder="0.00" value="{{ filters.min_amount if filters.min_amount is not none else '' }}">
+        </div>
+        <div class="field">
+          <label>Max amount</label>
+          <input class="input" type="number" name="max_amount" step="0.01" min="0"
+                 placeholder="no limit" value="{{ filters.max_amount if filters.max_amount is not none else '' }}">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Categories <span class="faint">(none checked = all)</span></label>
+        <div class="checkbox-list">
+          {% for c in categories %}
+          <label class="checkbox">
+            <input type="checkbox" name="category" value="{{ c.category_id }}"
+                   {{ 'checked' if c.category_id in filters.category_ids }}>
+            <span>{{ c.category_name }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
   </div>
+
+  <!-- ===================== Add form =====================================
+       Posts to /transactions/new and gets the whole list back, so the new
+       row shows up in the right sort position (or not at all, if the current
+       filters exclude it).
+  -->
+  <div class="card" style="margin-bottom: var(--sp-4);">
+    <div class="card-header">
+      <h3>Add a transaction</h3>
+      <span class="badge">Editable &amp; removable</span>
+    </div>
+
+    <form class="grid cols-4" style="align-items: end;"
+          hx-post="{{ url_for('transactions_create') }}"
+          hx-target="#tx-list"
+          hx-swap="outerHTML"
+          hx-include="#tx-filters"
+          hx-on::after-request="this.reset()">
+      <div class="field">
+        <label>Date</label>
+        <input class="input" type="date" name="transaction_date"
+               value="{{ filters.end_date or '' }}" required>
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input class="input" type="text" name="description" placeholder="Coffee shop" required>
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select class="select" name="category_id">
+          {% for c in categories %}
+          <option value="{{ c.category_id }}">{{ c.category_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label>Amount</label>
+        <div class="row" style="gap: var(--sp-2); flex-wrap: nowrap;">
+          <input class="input" type="number" name="amount" step="0.01" min="0"
+                 placeholder="0.00" required>
+          <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  {% include "partials/_transaction_list.html" %}
 </div>
 {% endblock %}

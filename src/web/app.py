@@ -11,6 +11,9 @@ Then open http://127.0.0.1:5000/.
 
 from __future__ import annotations
 
+import calendar
+from datetime import date
+
 from flask import Flask, render_template, request
 
 from web.sample_data import CATEGORIES, TRANSACTIONS, DemoTransaction, add_transaction
@@ -22,7 +25,16 @@ from queries import (
     spending_by_month,
     budget_vs_actual,
     net_cash_flow_by_month,
+    get_categories,
+    search_transactions,
+    count_transactions,
+    get_transaction,
+    create_transaction,
+    update_transaction,
+    delete_transaction,
 )
+
+PAGE_SIZE = 50
 
 app = Flask(__name__)
 
@@ -64,10 +76,172 @@ def dashboard_filter():
         category_spending=spending_by_category(month),
     )
 
+# --- Transactions --------------------------------------------------------
+# The page renders the filter form + the list; every interaction after that
+# (filtering, paging, add, edit, delete) swaps a partial back in via HTMX.
+
+
+def _default_range() -> tuple[str, str]:
+    """First/last day of the default month for the date-range filter.
+
+    The seeded dataset is historical, so "current month" means the most recent
+    month that actually has transactions — today's month is only used when the
+    table is empty. Swap ``months[-1]`` for ``date.today()`` to make it literal.
+    """
+    months = available_months()
+    month = months[-1] if months else date.today().strftime("%Y-%m")
+    year, mon = int(month[:4]), int(month[5:7])
+    return f"{month}-01", f"{month}-{calendar.monthrange(year, mon)[1]:02d}"
+
+
+def _float_or_none(raw: str | None) -> float | None:
+    try:
+        return float(raw) if raw else None
+    except ValueError:
+        return None
+
+
+def _read_filters(default_start: str | None = None,
+                  default_end: str | None = None) -> dict[str, object]:
+    """Pull the filter values out of the query string.
+
+    Defaults apply only when the key is *absent* — once the filter form has
+    been submitted an empty date means the user deliberately cleared it.
+    ``request.values`` covers both the query string (GET filter/paging) and the
+    form body (the add form, which hx-includes the filters).
+    """
+    args = request.values
+    return {
+        "start_date": args.get("start_date", default_start) or None,
+        "end_date": args.get("end_date", default_end) or None,
+        "category_ids": [int(c) for c in args.getlist("category") if c.isdigit()],
+        "min_amount": _float_or_none(args.get("min_amount")),
+        "max_amount": _float_or_none(args.get("max_amount")),
+        "search": args.get("search", "").strip() or None,
+    }
+
+
+def _list_context(filters: dict[str, object]) -> dict[str, object]:
+    """Everything the list partial needs: the page of rows + paging state."""
+    page = max(1, int(request.values.get("page", 1) or 1))
+    total = count_transactions(**filters)  # pyright: ignore[reportArgumentType]
+    pages = max(1, -(-total // PAGE_SIZE))  # ceil
+    page = min(page, pages)
+
+    rows = search_transactions(
+        limit=PAGE_SIZE,
+        offset=(page - 1) * PAGE_SIZE,
+        **filters,  # pyright: ignore[reportArgumentType]
+    )
+    return {
+        "transactions": rows,
+        "categories": get_categories(),
+        "total": total,
+        "page": page,
+        "pages": pages,
+        "page_size": PAGE_SIZE,
+    }
+
+
 @app.get("/transactions")
 def transactions():
-    """Placeholder — the transactions list + add form will live here."""
-    return render_template("transactions.html")
+    """Full page: filter form, add form, and the first page of the list."""
+    default_start, default_end = _default_range()
+    filters = _read_filters(default_start, default_end)
+    return render_template(
+        "transactions.html",
+        filters=filters,
+        **_list_context(filters),
+    )
+
+
+@app.get("/transactions/list")
+def transactions_list():
+    """The filtered/paged list on its own — the HTMX swap target."""
+    filters = _read_filters()
+    return render_template(
+        "partials/_transaction_list.html",
+        filters=filters,
+        **_list_context(filters),
+    )
+
+
+@app.post("/transactions/new")
+def transactions_create():
+    """Add a transaction, then re-render the list so it lands in place."""
+    form = request.form
+    create_transaction(
+        transaction_date=form.get("transaction_date", "").strip(),
+        amount=abs(float(form.get("amount", 0) or 0)),
+        description=form.get("description", "").strip() or "Untitled",
+        category_id=int(form["category_id"]),
+    )
+    filters = _read_filters()
+    return render_template(
+        "partials/_transaction_list.html",
+        filters=filters,
+        **_list_context(filters),
+    )
+
+
+@app.get("/transactions/<int:transaction_id>/edit")
+def transactions_edit_form(transaction_id: int):
+    """Swap one row into an inline edit form (user-created rows only)."""
+    t = get_transaction(transaction_id)
+    if t is None:
+        return "", 404
+    if not t["is_user_created"]:
+        return render_template("partials/_transaction_item.html", t=t), 403
+    return render_template(
+        "partials/_transaction_edit.html", t=t, categories=get_categories()
+    )
+
+
+@app.get("/transactions/<int:transaction_id>")
+def transactions_row(transaction_id: int):
+    """The read-only row — used to cancel out of the edit form."""
+    t = get_transaction(transaction_id)
+    if t is None:
+        return "", 404
+    return render_template("partials/_transaction_item.html", t=t)
+
+
+@app.post("/transactions/<int:transaction_id>")
+def transactions_update(transaction_id: int):
+    """Save an inline edit and swap the read-only row back in."""
+    form = request.form
+    update_transaction(
+        transaction_id=transaction_id,
+        transaction_date=form.get("transaction_date", "").strip(),
+        amount=abs(float(form.get("amount", 0) or 0)),
+        description=form.get("description", "").strip() or "Untitled",
+        category_id=int(form["category_id"]),
+    )
+    t = get_transaction(transaction_id)
+    if t is None:
+        return "", 404
+    return render_template("partials/_transaction_item.html", t=t)
+
+
+@app.delete("/transactions/<int:transaction_id>")
+def transactions_delete(transaction_id: int):
+    """Remove a user-created transaction; seeded rows are left alone.
+
+    Returns the whole list rather than an empty row so the count and the pager
+    stay honest after the row goes away.
+    """
+    if not delete_transaction(transaction_id):
+        t = get_transaction(transaction_id)
+        if t is None:
+            return "", 404
+        return render_template("partials/_transaction_item.html", t=t), 403
+
+    filters = _read_filters()
+    return render_template(
+        "partials/_transaction_list.html",
+        filters=filters,
+        **_list_context(filters),
+    )
 
 
 # --- HTMX demo endpoints -------------------------------------------------
