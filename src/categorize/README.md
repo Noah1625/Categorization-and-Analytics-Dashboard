@@ -8,8 +8,9 @@ Three tiers run in order.
 
 1. Rules: User regex -> category
 2. Memory (exact): Merchant key -> category counts
-3. Memory (subset): IDF-weighted tokens, typo correction.
-4. None
+3. Memory (compact): Same key ignoring spaces
+4. Memory (subset): IDF-weighted tokens, typo correction.
+5. None
 
 ```
 SQ *BLUE BOTTLE 04412 CHICAGO IL -> blue bottle
@@ -24,9 +25,9 @@ superset) of the query's is used instead, so a partially renamed merchant still
 resolves:
 
 ```
-"Starbucks Coffee"  -> starbucks       -> Coffee Shops 0.76
-"Shell Gas Station" -> shell           -> Gas & Fuel   0.73
-"Thai"              -> thai restaurant -> Restaurants  0.69
+"Starbucks Coffee"  -> starbucks       -> Coffee Shops 0.78
+"Shell Gas Station" -> gas station     -> Gas & Fuel   0.53
+"Thai"              -> thai restaurant -> Restaurants  0.55
 ```
 
 ### Typo tolerance
@@ -34,7 +35,7 @@ resolves:
 Tokens that aren't known are resolved to the closest one that is, before subset matching runs.
 
 ```
-"Pecock"        -> peacock   -> Television   0.57
-"Starbcuks"     -> starbucks -> Coffee Shops 0.61
-"Groceyr Store" -> grocery   -> Groceries    0.61
+"Starbcuks"     -> starbucks     -> Coffee Shops 0.63
+"Groceyr Store" -> grocery store -> Groceries    0.61
+"Chrunchy roll" -> crunchy roll  -> Television   0.58
 ```

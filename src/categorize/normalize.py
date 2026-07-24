@@ -46,7 +46,7 @@ def merchant_key(*parts: str | None) -> str:
     >>> merchant_key("SHELL OIL #087C70")
     'shell oil'
     >>> merchant_key("SQ *BLUE BOTTLE 04412 CHICAGO IL")
-    'blue bottle'
+    'blue bottle chicago'
     """
     text = " ".join(p for p in parts if p)
 

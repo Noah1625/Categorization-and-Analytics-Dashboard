@@ -35,6 +35,9 @@ SUBSET_MIN_OVERLAP = 0.5
 # match resting only on such tokens is rejected outright.
 SUBSET_STOPWORD_DF = 0.25
 
+# Where a merchant puts its spaces is formatting, not identity.
+COMPACT_PENALTY = 0.98
+
 # Similarity is 1 - distance/length, so 0.82 permits one edit in a 6-character
 # token and two in an 11-character one.
 TYPO_MIN_SIMILARITY = 0.82
@@ -95,10 +98,14 @@ class Categorizer:
 
     category_names: dict[int, str] = field(default_factory=dict)
     _rules: list[_Rule] = field(default_factory=list)
+    # Decayed weights, for deciding which category a key votes for.
     _memory: dict[str, dict[str, dict[int, float]]] = field(default_factory=dict)
+    # The same observations undecayed, for deciding how much evidence there is.
+    _support: dict[str, dict[str, dict[int, float]]] = field(default_factory=dict)
     _token_keys: dict[str, dict[str, set[str]]] = field(default_factory=dict)
     _key_tokens: dict[str, dict[str, frozenset[str]]] = field(default_factory=dict)
     _token_grams: dict[str, dict[str, set[str]]] = field(default_factory=dict)
+    _compact_keys: dict[str, dict[str, set[str]]] = field(default_factory=dict)
     _reference_date: date | None = None
 
     def fit(
@@ -114,9 +121,11 @@ class Categorizer:
             }
 
         self._memory = {scope: defaultdict(lambda: defaultdict(float)) for scope in _SCOPES}
+        self._support = {scope: defaultdict(lambda: defaultdict(float)) for scope in _SCOPES}
         self._token_keys = {scope: defaultdict(set) for scope in _SCOPES}
         self._key_tokens = {scope: {} for scope in _SCOPES}
         self._token_grams = {scope: defaultdict(set) for scope in _SCOPES}
+        self._compact_keys = {scope: defaultdict(set) for scope in _SCOPES}
 
         observations: list[_Observation] = []
         for txn in transactions:
@@ -173,10 +182,14 @@ class Categorizer:
             if not key:
                 continue
             self._memory[scope][key][obs.category_id] += weight
+            # Undecayed, so an old merchant still counts as known. Decay belongs
+            # in the vote, not in the question of whether evidence exists.
+            self._support[scope][key][obs.category_id] += obs.weight
             if key in self._key_tokens[scope]:
                 continue
             tokens = _tokens_of(key)
             self._key_tokens[scope][key] = tokens
+            self._compact_keys[scope][_compact(key)].add(key)
             for token in tokens:
                 # Gram-index only on a token's first sighting in this scope.
                 if token not in self._token_keys[scope]:
@@ -249,7 +262,20 @@ class Categorizer:
                 factor = min(factor, match[1] * TYPO_PENALTY)
         return frozenset(resolved), factor
 
-    def _subset_match(self, scope: str, key: str) -> tuple[dict[int, float], float] | None:
+    def _support_for(self, scope: str, key: str) -> float:
+        """Total undecayed evidence recorded for a key."""
+        return sum(self._support.get(scope, {}).get(key, {}).values())
+
+    def _compact_match(self, scope: str, key: str) -> tuple[str, float] | None:
+        """Find a stored key that differs from ``key`` only in its spacing."""
+        candidates = self._compact_keys.get(scope, {}).get(_compact(key), set()) - {key}
+        if not candidates:
+            return None
+        # Several spellings can collapse to the same string; trust the best-attested.
+        best_key = max(candidates, key=lambda k: self._support_for(scope, k))
+        return best_key, COMPACT_PENALTY
+
+    def _subset_match(self, scope: str, key: str) -> tuple[str, float] | None:
         """Find the best stored key whose tokens subset-match ``key``."""
         query_tokens = _tokens_of(key)
         if not query_tokens:
@@ -288,14 +314,14 @@ class Categorizer:
                 continue
 
             # Score is a combination of quality and support.
-            support = sum(self._memory[scope][candidate].values())
+            support = self._support_for(scope, candidate)
             score = shared_idf * (support / (support + SUPPORT_DAMPING))
             if score > best_score:
                 best_key, best_quality, best_score = candidate, quality, score
 
         if best_key is None:
             return None
-        return self._memory[scope][best_key], best_quality * typo_factor * SUBSET_PENALTY
+        return best_key, best_quality * typo_factor * SUBSET_PENALTY
 
     # -------------------------------------------------------------- predicting
 
@@ -329,22 +355,27 @@ class Categorizer:
             counts = self._memory.get(scope, {}).get(key)
             quality = 1.0
             if not counts:
-                # Exact miss — fall back to a partially-renamed merchant.
-                fallback = self._subset_match(scope, key)
+                # Exact miss — try a respacing first, then a partial rename.
+                fallback = self._compact_match(scope, key) or self._subset_match(scope, key)
                 if fallback is None:
                     continue
-                counts, quality = fallback
+                key, quality = fallback
+                counts = self._memory[scope][key]
 
             total = sum(counts.values())
             if total <= 0:
                 continue
+            # How many observations back this key, ignoring their age. Using the
+            # decayed total here would read every merchant older than a few
+            # half-lives as unsupported and zero out its confidence.
+            support = self._support_for(scope, key)
 
-            # Weight the scope's opinion by its configured weight, the total support for this key, and the quality of the match.
-            weight = _SCOPE_WEIGHTS[scope] * (total / (total + SUPPORT_DAMPING)) * quality
+            # Weight the scope's opinion by its configured weight, the support for this key, and the quality of the match.
+            weight = _SCOPE_WEIGHTS[scope] * (support / (support + SUPPORT_DAMPING)) * quality
             for category_id, category_weight in counts.items():
                 pooled[category_id] += weight * (category_weight / total)
             influence += weight
-            raw_support = max(raw_support, total)
+            raw_support = max(raw_support, support)
             best_quality = max(best_quality, quality)
 
         if not pooled or influence <= 0:
@@ -401,6 +432,11 @@ class Categorizer:
 def _tokens_of(key: str) -> frozenset[str]:
     """Split a normalized key into its token set, dropping the scope separator."""
     return frozenset(key.replace("|", " ").split())
+
+
+def _compact(key: str) -> str:
+    """Strip a key's spacing, keeping the scope separator so fields stay distinct."""
+    return "|".join("".join(part.split()) for part in key.split("|"))
 
 
 def _bigrams(token: str) -> frozenset[str]:
