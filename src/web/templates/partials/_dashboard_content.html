@@ -12,9 +12,15 @@
         <h2>Spending</h2>
     </div>
 
+    {% if budget_data is none %}
+
+        <p class="muted">Select a specific month to view budget vs actual.</p>
+
+    {% else %}
+
     <div class="category-chart">
 
-        {% for category, total in category_spending %}
+        {% for category, budget, actual, remaining in budget_data %}
 
         <div class="category-bar-row">
 
@@ -22,15 +28,39 @@
                 {{ category }}
             </div>
 
+
             <div class="progress">
-                <div
-                    class="bar"
-                    style="width: {{ (total / category_spending[0][1] * 100)|round }}%">
-                </div>
+
+                {% if budget <= 0 %}
+
+                    <div
+                        class="bar {% if actual > 0 %}expense{% else %}income{% endif %}"
+                        style="width: {% if actual > 0 %}100{% else %}0{% endif %}%;">
+                    </div>
+
+                {% elif actual > budget %}
+
+                    <div
+                        class="bar expense"
+                        style="width: 100%;">
+                    </div>
+
+                {% else %}
+
+                    <div
+                        class="bar income"
+                        style="width: {{ (actual / budget * 100)|round }}%;">
+                    </div>
+
+                {% endif %}
+
             </div>
 
+
             <div class="category-value">
-                ${{ "%.2f"|format(total) }}
+                ${{ "%.0f"|format(actual) }}
+                /
+                ${{ "%.0f"|format(budget) }}
             </div>
 
         </div>
@@ -38,5 +68,7 @@
         {% endfor %}
 
     </div>
+
+    {% endif %}
 
 </div>

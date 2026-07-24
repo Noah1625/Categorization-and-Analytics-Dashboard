@@ -1,31 +1,62 @@
-{% for category, budget, actual, remaining in budget_data %}
+{% if budget_data is none %}
 
-<div class="category-bar-row">
-
-    <div>
-        {{ category }}
+    <div class="card">
+        <p class="muted">
+            Select a specific month to view budget vs actual.
+        </p>
     </div>
 
-    <div class="progress">
-        {% if actual <= budget %}
-            <div 
-                class="bar income"
-                style="width: {{ (actual / budget * 100)|round }}%">
+{% else %}
+
+    <div class="category-chart">
+
+        {% for category, budget, actual, remaining in budget_data %}
+
+        <div class="category-bar-row">
+
+            <div class="category-name">
+                {{ category }}
             </div>
-        {% else %}
-            <div 
-                class="bar expense"
-                style="width: {{ (actual / budget * 100)|round }}%">
+
+
+            <div class="progress">
+
+                {% if budget <= 0 %}
+
+                    <div
+                        class="bar {% if actual > 0 %}expense{% else %}income{% endif %}"
+                        style="width: {% if actual > 0 %}100{% else %}0{% endif %}%;">
+                    </div>
+
+                {% elif actual > budget %}
+
+                    <div
+                        class="bar expense"
+                        style="width: 100%;">
+                    </div>
+
+                {% else %}
+
+                    <div
+                        class="bar income"
+                        style="width: {{ (actual / budget * 100)|round }}%;">
+                    </div>
+
+                {% endif %}
+
             </div>
-        {% endif %}
+
+
+            <div class="category-value">
+                ${{ "%.0f"|format(actual) }}
+                /
+                ${{ "%.0f"|format(budget) }}
+            </div>
+
+        </div>
+
+        {% endfor %}
+
     </div>
 
-    <div>
-        ${{ "%.0f"|format(actual) }}
-        /
-        ${{ "%.0f"|format(budget) }}
-    </div>
-
-</div>
-
-{% endfor %}
+{% endif %}

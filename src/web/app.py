@@ -52,16 +52,17 @@ def index():
 def dashboard():
 
     months = available_months()
-
-    selected_month = None
+    selected_month = months[-1] if months else None
 
     return render_template(
         "dashboard.html",
         total_spending=total_spending(selected_month),
         category_spending=spending_by_category(selected_month),
+        budget_data=budget_vs_actual(selected_month) if selected_month else None,
         monthly_spending=spending_by_month(),
         monthly_cash_flow=net_cash_flow_by_month(),
         months=months,
+        selected_month=selected_month,
     )
     
     
@@ -74,6 +75,7 @@ def dashboard_filter():
         "partials/_dashboard_content.html",
         total_spending=total_spending(month),
         category_spending=spending_by_category(month),
+        budget_data=budget_vs_actual(month) if month else None,
     )
 
 # --- Transactions --------------------------------------------------------
@@ -285,11 +287,11 @@ def demo_add_transaction():
 
 @app.get("/dashboard/budget")
 def dashboard_budget():
-    budget_data = budget_vs_actual("2018-07")
+    month = request.args.get("month") or None
 
     return render_template(
         "partials/_budget_chart.html",
-        budget_data=budget_data,
+        budget_data=budget_vs_actual(month) if month else None,
     )
 
 

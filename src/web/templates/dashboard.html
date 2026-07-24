@@ -19,7 +19,7 @@
         <option value="">All Time</option>
 
         {% for month in months %}
-        <option value="{{ month }}">
+        <option value="{{ month }}" {% if month == selected_month %}selected{% endif %}>
             {{ month }}
         </option>
         {% endfor %}
@@ -28,46 +28,7 @@
 </div>
 
 <div id="dashboard-content">
-
-    <div class="card kpi">
-        <div class="kpi-label">Total Spending</div>
-        <div class="kpi-value">
-            ${{ "%.2f"|format(total_spending) }}
-        </div>
-    </div>
-
-
-  <div class="card">
-
-    <div class="card-header">
-        <h2>Spending</h2>
-
-        <div>
-            <button
-                class="btn btn-primary"
-                hx-get="/dashboard/category"
-                hx-target="#spending-card-content"
-                hx-include="#time-filter">
-                Categories
-            </button>
-
-            <button
-                class="btn btn-ghost"
-                hx-get="/dashboard/budget"
-                hx-target="#spending-card-content"
-                hx-include="#time-filter">
-                Budget
-            </button>
-        </div>
-    </div>
-
-    <div id="spending-card-content">
-
-        {% include "partials/_category_chart.html" %}
-
-    </div>
-
-  </div>
+    {% include "partials/_dashboard_content.html" %}
 
 </div>
 {% endblock %}
