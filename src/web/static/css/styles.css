@@ -339,13 +339,18 @@ a:hover { text-decoration: underline; }
 .checkbox-list .checkbox input { accent-color: var(--c-primary); margin: 0; }
 
 .dashboard-filters { margin-bottom: var(--sp-4); }
-.dashboard-filters .checkbox-list { max-height: 190px; }
+.dashboard-filters .checkbox-list {
+  max-height: none;
+  overflow-y: visible;
+}
 .dashboard-filter-fields {
   display: grid;
   grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
   gap: var(--sp-4);
 }
-.dashboard-category-filter { grid-column: auto; }
+.dashboard-category-filter select {
+    height: 300px;
+}
 .dashboard-kpis {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
