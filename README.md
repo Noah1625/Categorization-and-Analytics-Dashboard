@@ -21,6 +21,39 @@ The application:
 
 ---
 
+## Exploratory Data Analysis
+
+Before building the database-backed application, exploratory data analysis (EDA) was performed to understand the structure and characteristics of the transaction data.
+
+The analysis explored:
+
+- Spending patterns over time
+- Spending by category
+- Budget versus actual spending
+- Income and expense distributions
+- Transaction classifications
+- Potential data quality issues and anomalies
+
+The EDA helped inform the design of the database schema, the analytical SQL queries, and the metrics ultimately used in the dashboard.
+
+This created a workflow from initial data exploration to production-style analytics:
+
+```text
+Raw Transaction Data
+        ↓
+Exploratory Data Analysis
+        ↓
+Data Preparation & Categorization
+        ↓
+Database Design
+        ↓
+Analytical SQL
+        ↓
+Dashboard Development
+```
+
+---
+
 ## Dashboard
 
 The dashboard provides a high-level overview of personal spending and budget performance.
@@ -36,6 +69,8 @@ The dashboard includes:
 * **Month-over-Month Spending Change**
 
 The dashboard can be filtered by time period and category, allowing the displayed metrics and visualizations to update based on the selected data.
+
+---
 
 ### Spending Analysis
 
