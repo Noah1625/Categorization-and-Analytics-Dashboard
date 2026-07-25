@@ -13,12 +13,10 @@
   <header class="topnav">
     <span class="brand"><span class="dot"></span> Analytics Dashboard</span>
     <nav>
-      <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' }}">Components</a>
       <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' }}">Dashboard</a>
       <a href="{{ url_for('transactions') }}" class="{{ 'active' if request.endpoint == 'transactions' }}">Transactions</a>
     </nav>
     <span class="spacer"></span>
-    <span class="badge">HTMX sample</span>
   </header>
 
   <main class="container">

@@ -1,15 +1,8 @@
-# Python Dev
+# Running locally
 
-Loads the processed CSV data into a PostgreSQL database using a Python client.
-The database runs in Docker, and a small CLI connects, creates the tables (once),
-and loads the data.
+Running outside Docker, against the Postgres container. Requires Python 3.11+.
 
-## Requirements
-
-- [Docker](https://www.docker.com/) (with Docker Compose)
-- Python 3.11+
-
-## Setting Up Environment
+## Setup
 
 ```bash
 python -m venv .venv
@@ -24,7 +17,9 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Connection settings are read from environment variables, with defaults that match `docker-compose.yml`, so it runs with no setup. To override, copy `.env.example` to `.env` (in the repo root) and edit it.
+Read from environment variables, with defaults that match `docker-compose.yml`,
+so it runs with no setup. To override, copy `.env.example` to `.env` in the repo
+root.
 
 | Variable            | Default     |
 |---------------------|-------------|
@@ -34,34 +29,15 @@ Connection settings are read from environment variables, with defaults that matc
 | `POSTGRES_PASSWORD` | `dashboard` |
 | `POSTGRES_DB`       | `analytics` |
 
-## Running
+## Commands
 
-### 1. Start the database
-
-From the repo root:
-
-```bash
-docker compose up -d
-```
-
-This starts a `postgres:16` container named `analytics_postgres` with the
-credentials above and a persistent volume.
-
-### 2. Load the database
-
-From the `src/` directory:
+Start the database from the repo root with `docker compose up -d`, then from
+`src/`:
 
 ```bash
-python main.py check # verify the connection (prints server version)
-python main.py setup # create tables if missing, then load the CSV data
+python main.py check # verify the connection
+python main.py setup # create tables if missing, then load the CSV data (idempotent)
 python main.py demo  # run the example read queries and print results
 ```
 
-> INFO: `setup` is idempotent.
-
-### 3. Stop / reset the database
-
-```bash
-docker compose down    # stop the container (keeps data volume)
-docker compose down -v # stop and delete the data volume
-```
+See [`web/README.md`](web/README.md) to run the Flask app.
