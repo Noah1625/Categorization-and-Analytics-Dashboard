@@ -5,11 +5,7 @@
 <div class="section">
   <h1>Transactions</h1>
 
-  <!-- ===================== Filters =====================================
-       Every control in this form triggers a GET to /transactions/list and
-       swaps the result over #tx-list. The add form and the pager pull their
-       values back out of here with hx-include, so the list stays consistent.
-  -->
+  <!-- Filters -->
   <div class="card" style="margin-bottom: var(--sp-4);">
     <div class="card-header">
       <h3>Filters</h3>
@@ -64,11 +60,7 @@
     </form>
   </div>
 
-  <!-- ===================== Add form =====================================
-       Posts to /transactions/new and gets the whole list back, so the new
-       row shows up in the right sort position (or not at all, if the current
-       filters exclude it).
-  -->
+  <!-- Add form -->
   <div class="card" style="margin-bottom: var(--sp-4);">
     <div class="card-header">
       <h3>Add a transaction</h3>

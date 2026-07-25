@@ -1,14 +1,3 @@
-"""Flask + HTMX sample app.
-
-Run from the ``src/`` directory:
-
-    flask --app web.app run --debug
-    # or
-    python -m web.app
-
-Then open http://127.0.0.1:5000/.
-"""
-
 from __future__ import annotations
 
 import calendar
@@ -177,18 +166,10 @@ def dashboard_filter():
         **_dashboard_context(month, category_ids),
     )
 
-# --- Transactions --------------------------------------------------------
-# The page renders the filter form + the list; every interaction after that
-# (filtering, paging, add, edit, delete) swaps a partial back in via HTMX.
-
+# Transactions
 
 def _default_range() -> tuple[str, str]:
-    """First/last day of the default month for the date-range filter.
-
-    The seeded dataset is historical, so "current month" means the most recent
-    month that actually has transactions - today's month is only used when the
-    table is empty. Swap ``months[-1]`` for ``date.today()`` to make it literal.
-    """
+    """First/last day of the default month for the date-range filter."""
     months = available_months()
     month = months[-1] if months else date.today().strftime("%Y-%m")
     year, mon = int(month[:4]), int(month[5:7])
@@ -204,13 +185,7 @@ def _float_or_none(raw: str | None) -> float | None:
 
 def _read_filters(default_start: str | None = None,
                   default_end: str | None = None) -> dict[str, object]:
-    """Pull the filter values out of the query string.
-
-    Defaults apply only when the key is *absent* - once the filter form has
-    been submitted an empty date means the user deliberately cleared it.
-    ``request.values`` covers both the query string (GET filter/paging) and the
-    form body (the add form, which hx-includes the filters).
-    """
+    """Pull the filter values out of the query string."""
     args = request.values
     return {
         "start_date": args.get("start_date", default_start) or None,
