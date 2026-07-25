@@ -41,6 +41,104 @@ PAGE_SIZE = 50
 app = Flask(__name__)
 
 
+def _budget_status(spending: float, budget: float) -> str | None:
+    """Classify budget health: under 80%, nearing the limit, or over it."""
+    if budget <= 0:
+        return "danger" if spending > 0 else "good"
+    ratio = spending / budget
+    if ratio > 1:
+        return "danger"
+    if ratio >= 0.8:
+        return "warning"
+    return "good"
+
+
+def _monthly_trend(
+    monthly_spending: list[tuple[str, float]], selected_month: str | None
+) -> list[dict[str, object]]:
+    """Return all history or a five-month comparison window for the trend chart."""
+    if not monthly_spending:
+        return []
+
+    if selected_month is None:
+        nearby = monthly_spending
+    else:
+        selected_index = next(
+            (index for index, (month, _) in enumerate(monthly_spending) if month == selected_month),
+            len(monthly_spending) - 1,
+        )
+        start = max(0, selected_index - 2)
+        end = min(len(monthly_spending), start + 5)
+        start = max(0, end - 5)
+        nearby = monthly_spending[start:end]
+
+    highest = max(total for _, total in nearby)
+    count = len(nearby)
+    label_stride = max(1, (count - 1 + 4) // 5)
+    point_radius = 0.75 if count > 12 else 1.05 if count > 5 else 1.5
+
+    return [
+        {
+            "month": month,
+            "total": total,
+            "x": 50 if count == 1 else round(6 + index / (count - 1) * 88, 2),
+            "y": 20 if highest == 0 else round(20 - total / highest * 16, 2),
+            "radius": point_radius,
+            "show_label": index == 0 or index == count - 1 or index % label_stride == 0,
+        }
+        for index, (month, total) in enumerate(nearby)
+    ]
+
+
+def _dashboard_context(
+    month: str | None,
+    category_ids: list[int],
+) -> dict[str, object]:
+    """Build every dashboard metric from the same global filter values."""
+    spending = total_spending(month, category_ids)
+    budget_data = budget_vs_actual(month, category_ids) if month else None
+    monthly_spending = spending_by_month(category_ids)
+    context: dict[str, object] = {
+        "total_spending": spending,
+        "category_spending": spending_by_category(month, category_ids),
+        "monthly_trend": _monthly_trend(monthly_spending, month),
+        "budget_data": budget_data,
+        "budget_remaining": None,
+        "budget_used_percent": None,
+        "budget_status": None,
+        "projected_month_end_spend": None,
+        "projected_budget_status": None,
+        "month_over_month_change": None,
+        "month_over_month_percent": None,
+    }
+
+    if not month or budget_data is None:
+        return context
+
+    total_budget = sum(budget for _, budget, _, _ in budget_data)
+    context["budget_remaining"] = total_budget - spending
+    context["budget_used_percent"] = (spending / total_budget * 100) if total_budget else None
+    context["budget_status"] = _budget_status(spending, total_budget)
+
+    year, month_number = (int(part) for part in month.split("-"))
+    days_in_month = calendar.monthrange(year, month_number)[1]
+    today = date.today()
+    elapsed_days = today.day if (today.year, today.month) == (year, month_number) else days_in_month
+    context["projected_month_end_spend"] = spending / elapsed_days * days_in_month
+    context["projected_budget_status"] = _budget_status(
+        float(context["projected_month_end_spend"]), total_budget
+    )
+
+    previous_year, previous_month = (year - 1, 12) if month_number == 1 else (year, month_number - 1)
+    previous_period = f"{previous_year:04d}-{previous_month:02d}"
+    previous_spending = total_spending(previous_period, category_ids)
+    context["month_over_month_change"] = spending - previous_spending
+    if previous_spending:
+        context["month_over_month_percent"] = (spending - previous_spending) / previous_spending * 100
+
+    return context
+
+
 @app.get("/")
 def index():
     """The component showcase / style-guide landing page."""
@@ -54,17 +152,17 @@ def index():
 def dashboard():
 
     months = available_months()
-    selected_month = months[-1] if months else None
+    selected_month = request.args.get("month") or (months[-1] if months else None)
+    category_ids = [int(value) for value in request.args.getlist("category") if value.isdigit()]
 
     return render_template(
         "dashboard.html",
-        total_spending=total_spending(selected_month),
-        category_spending=spending_by_category(selected_month),
-        budget_data=budget_vs_actual(selected_month) if selected_month else None,
-        monthly_spending=spending_by_month(),
+        **_dashboard_context(selected_month, category_ids),
         monthly_cash_flow=net_cash_flow_by_month(),
         months=months,
         selected_month=selected_month,
+        categories=get_categories(),
+        selected_category_ids=category_ids,
     )
     
     
@@ -72,12 +170,11 @@ def dashboard():
 def dashboard_filter():
 
     month = request.args.get("month") or None
+    category_ids = [int(value) for value in request.args.getlist("category") if value.isdigit()]
 
     return render_template(
         "partials/_dashboard_content.html",
-        total_spending=total_spending(month),
-        category_spending=spending_by_category(month),
-        budget_data=budget_vs_actual(month) if month else None,
+        **_dashboard_context(month, category_ids),
     )
 
 # --- Transactions --------------------------------------------------------

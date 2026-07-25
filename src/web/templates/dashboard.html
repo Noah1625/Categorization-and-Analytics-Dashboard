@@ -5,27 +5,41 @@
 <div class="section">
 
   <h1>Dashboard</h1>
-<div class="field">
-    <label>Time Period</label>
-
-    <select
-        id="time-filter"
-        class="select"
-        name="month"
-        hx-get="/dashboard/filter"
-        hx-target="#dashboard-content"
-        hx-swap="innerHTML">
-
-        <option value="">All Time</option>
-
-        {% for month in months %}
-        <option value="{{ month }}" {% if month == selected_month %}selected{% endif %}>
-            {{ month }}
-        </option>
-        {% endfor %}
-
-    </select>
-</div>
+  <div class="card dashboard-filters">
+    <div class="card-header">
+      <h3>Filters</h3>
+      <a href="{{ url_for('dashboard') }}" class="btn btn-ghost btn-sm">Reset</a>
+    </div>
+    <form id="dashboard-filters"
+          hx-get="{{ url_for('dashboard_filter') }}"
+          hx-target="#dashboard-content"
+          hx-swap="innerHTML"
+          hx-trigger="change">
+      <div class="dashboard-filter-fields">
+        <div class="field">
+          <label for="time-filter">Month</label>
+          <select id="time-filter" class="select" name="month">
+            <option value="">All Time</option>
+            {% for month in months %}
+            <option value="{{ month }}" {% if month == selected_month %}selected{% endif %}>{{ month }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="field dashboard-category-filter">
+          <label>Categories <span class="faint">(none checked = all)</span></label>
+          <div class="checkbox-list">
+            {% for category in categories if category.transaction_class == 'Expense' %}
+            <label class="checkbox">
+              <input type="checkbox" name="category" value="{{ category.category_id }}"
+                     {{ 'checked' if category.category_id in selected_category_ids }}>
+              <span>{{ category.category_name }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
 <div id="dashboard-content">
     {% include "partials/_dashboard_content.html" %}

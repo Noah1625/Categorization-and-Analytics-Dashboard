@@ -79,7 +79,12 @@ def get_transactions_for_category(category_id: int) -> list[Transaction]:
             ]
 
 
-def spending_by_category(month: str | None = None) -> list[tuple[str, float]]:
+def spending_by_category(
+    month: str | None = None,
+    category_ids: list[int] | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+) -> list[tuple[str, float]]:
     """Total spend per expense category."""
 
     conn: connection
@@ -88,37 +93,32 @@ def spending_by_category(month: str | None = None) -> list[tuple[str, float]]:
     with get_connection() as conn:
         with conn.cursor() as cur:
 
+            clauses = ["c.transaction_class = 'Expense'"]
+            params: list[object] = []
             if month:
-                cur.execute(
-                    """
-                    SELECT
-                        c.category_name,
-                        SUM(t.amount) AS total
-                    FROM transactions t
-                    JOIN categories c
-                        ON c.category_id = t.category_id
-                    WHERE c.transaction_class = 'Expense'
-                    AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s
-                    GROUP BY c.category_name
-                    ORDER BY total DESC;
-                    """,
-                    (month,),
-                )
+                clauses.append("TO_CHAR(t.transaction_date, 'YYYY-MM') = %s")
+                params.append(month)
+            if start_date:
+                clauses.append("t.transaction_date >= %s")
+                params.append(start_date)
+            if end_date:
+                clauses.append("t.transaction_date <= %s")
+                params.append(end_date)
+            if category_ids:
+                clauses.append("t.category_id = ANY(%s)")
+                params.append(category_ids)
 
-            else:
-                cur.execute(
-                    """
-                    SELECT
-                        c.category_name,
-                        SUM(t.amount) AS total
-                    FROM transactions t
-                    JOIN categories c
-                        ON c.category_id = t.category_id
-                    WHERE c.transaction_class = 'Expense'
-                    GROUP BY c.category_name
-                    ORDER BY total DESC;
-                    """
-                )
+            cur.execute(
+                f"""
+                SELECT c.category_name, SUM(t.amount) AS total
+                FROM transactions t
+                JOIN categories c ON c.category_id = t.category_id
+                WHERE {' AND '.join(clauses)}
+                GROUP BY c.category_name
+                ORDER BY total DESC;
+                """,
+                tuple(params),
+            )
 
             return [
                 (str(name), float(total))
@@ -126,73 +126,107 @@ def spending_by_category(month: str | None = None) -> list[tuple[str, float]]:
             ]
 
 
-def total_spending(month: str | None = None) -> float:
+def total_spending(
+    month: str | None = None,
+    category_ids: list[int] | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+) -> float:
     conn: connection
     cur: cursor
 
     with get_connection() as conn:
         with conn.cursor() as cur:
 
+            clauses = ["c.transaction_class = 'Expense'"]
+            params: list[object] = []
             if month:
-                cur.execute(
-                    """
-                    SELECT COALESCE(SUM(t.amount), 0)
-                    FROM transactions t
-                    JOIN categories c
-                        ON t.category_id = c.category_id
-                    WHERE c.transaction_class = 'Expense'
-                    AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s;
-                    """,
-                    (month,),
-                )
-            else:
-                cur.execute(
-                    """
-                    SELECT COALESCE(SUM(t.amount), 0)
-                    FROM transactions t
-                    JOIN categories c
-                        ON t.category_id = c.category_id
-                    WHERE c.transaction_class = 'Expense';
-                    """
-                )
+                clauses.append("TO_CHAR(t.transaction_date, 'YYYY-MM') = %s")
+                params.append(month)
+            if start_date:
+                clauses.append("t.transaction_date >= %s")
+                params.append(start_date)
+            if end_date:
+                clauses.append("t.transaction_date <= %s")
+                params.append(end_date)
+            if category_ids:
+                clauses.append("t.category_id = ANY(%s)")
+                params.append(category_ids)
+
+            cur.execute(
+                f"""
+                SELECT COALESCE(SUM(t.amount), 0)
+                FROM transactions t
+                JOIN categories c ON t.category_id = c.category_id
+                WHERE {' AND '.join(clauses)};
+                """,
+                tuple(params),
+            )
 
             result = cur.fetchone()
             total = result[0] if result else 0.0
 
             return float(total)
 
-def spending_by_month() -> list[tuple[str, float]]:
+def spending_by_month(
+    category_ids: list[int] | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+    month: str | None = None,
+) -> list[tuple[str, float]]:
     conn: connection
     cur: cursor
 
     with get_connection() as conn:
         with conn.cursor() as cur:
+            clauses = ["c.transaction_class = 'Expense'"]
+            params: list[object] = []
+            if category_ids:
+                clauses.append("t.category_id = ANY(%s)")
+                params.append(category_ids)
+            if start_date:
+                clauses.append("t.transaction_date >= %s")
+                params.append(start_date)
+            if end_date:
+                clauses.append("t.transaction_date <= %s")
+                params.append(end_date)
+            if month:
+                clauses.append("TO_CHAR(t.transaction_date, 'YYYY-MM') = %s")
+                params.append(month)
+
             cur.execute(
-                """
+                f"""
                 SELECT
                     TO_CHAR(t.transaction_date, 'YYYY-MM') AS month,
                     SUM(t.amount) AS total_spending
                 FROM transactions t
                 JOIN categories c
                     ON t.category_id = c.category_id
-                WHERE c.transaction_class = 'Expense'
+                WHERE {' AND '.join(clauses)}
                 GROUP BY month
                 ORDER BY month;
-                """
+                """,
+                tuple(params),
             )
 
             return [(str(month), float(total)) for month, total in cur.fetchall()]
         
 
-def budget_vs_actual(month: str) -> list[tuple[str, float, float, float]]:
+def budget_vs_actual(month: str, category_ids: list[int] | None = None) -> list[tuple[str, float, float, float]]:
     """Compare monthly budgets against actual spending for a given month."""
     conn: connection
     cur: cursor
 
     with get_connection() as conn:
         with conn.cursor() as cur:
+            clauses = ["c.transaction_class = 'Expense'"]
+            params: list[object] = [month]
+            if category_ids:
+                clauses.append("b.category_id = ANY(%s)")
+                params.append(category_ids)
+
             cur.execute(
-                """
+                f"""
                 SELECT
                     c.category_name,
                     b.monthly_budget,
@@ -204,13 +238,13 @@ def budget_vs_actual(month: str) -> list[tuple[str, float, float, float]]:
                 LEFT JOIN transactions t
                     ON b.category_id = t.category_id
                     AND TO_CHAR(t.transaction_date, 'YYYY-MM') = %s
-                WHERE c.transaction_class = 'Expense'
+                WHERE {' AND '.join(clauses)}
                 GROUP BY
                     c.category_name,
                     b.monthly_budget
                 ORDER BY c.category_name;
                 """,
-                (month,),
+                tuple(params),
             )
 
             return [

@@ -1,8 +1,69 @@
-<div class="card kpi">
-    <div class="kpi-label">Total Spending</div>
-    <div class="kpi-value">
-        ${{ "%.2f"|format(total_spending) }}
+<div class="dashboard-kpis">
+    <div class="card kpi">
+        <div class="kpi-label">Total Spending</div>
+        <div class="kpi-value">${{ "%.2f"|format(total_spending) }}</div>
     </div>
+
+    <div class="card kpi {% if budget_status %}kpi-{{ budget_status }}{% endif %}">
+        <div class="kpi-label">Budget Remaining</div>
+        <div class="kpi-value">
+            {% if budget_remaining is not none %}${{ "%.2f"|format(budget_remaining) }}{% else %}—{% endif %}
+        </div>
+    </div>
+
+    <div class="card kpi {% if budget_status %}kpi-{{ budget_status }}{% endif %}">
+        <div class="kpi-label">Budget Used</div>
+        <div class="kpi-value">
+            {% if budget_used_percent is not none %}{{ "%.0f"|format(budget_used_percent) }}%{% else %}—{% endif %}
+        </div>
+    </div>
+
+    <div class="card kpi {% if projected_budget_status %}kpi-{{ projected_budget_status }}{% endif %}">
+        <div class="kpi-label">Projected Month-End Spend</div>
+        <div class="kpi-value">
+            {% if projected_month_end_spend is not none %}${{ "%.2f"|format(projected_month_end_spend) }}{% else %}—{% endif %}
+        </div>
+    </div>
+
+    <div class="card kpi">
+        <div class="kpi-label">Month-over-Month Change</div>
+        <div class="kpi-value">
+            {% if month_over_month_change is not none %}
+                {{ "+" if month_over_month_change >= 0 else "-" }}${{ "%.2f"|format(month_over_month_change|abs) }}
+                {% if month_over_month_percent is not none %}<span class="kpi-detail">({{ "%+.0f"|format(month_over_month_percent) }}%)</span>{% endif %}
+            {% else %}—{% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="card dashboard-trend">
+    <div class="card-header">
+        <h2>Monthly Spending Trend</h2>
+    </div>
+
+    {% if monthly_trend %}
+    <div class="trend-chart {% if monthly_trend|length > 5 %}trend-chart--dense{% endif %}" role="img" aria-label="Monthly spending trend">
+        <svg viewBox="0 0 100 24" aria-hidden="true">
+            <line class="trend-gridline" x1="6" y1="20" x2="94" y2="20"></line>
+            {% if monthly_trend|length > 1 %}
+            <polygon class="trend-area" points="6,20 {% for point in monthly_trend %}{{ point.x }},{{ point.y }} {% endfor %}94,20"></polygon>
+            <polyline class="trend-line" points="{% for point in monthly_trend %}{{ point.x }},{{ point.y }}{% if not loop.last %} {% endif %}{% endfor %}"></polyline>
+            {% endif %}
+            {% for point in monthly_trend %}
+            <circle class="trend-point" cx="{{ point.x }}" cy="{{ point.y }}" r="{{ point.radius }}"></circle>
+            {% endfor %}
+        </svg>
+        <div class="trend-labels">
+            {% for point in monthly_trend %}
+            <div class="{% if not point.show_label %}trend-label-hidden{% endif %}">
+                {% if point.show_label %}<span>{{ point.month }}</span><strong>${{ "%.0f"|format(point.total) }}</strong>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <p class="muted">No spending matches these filters.</p>
+    {% endif %}
 </div>
 
 
@@ -43,6 +104,13 @@
                     <div
                         class="bar expense"
                         style="width: 100%;">
+                    </div>
+
+                {% elif actual / budget >= 0.8 %}
+
+                    <div
+                        class="bar warn"
+                        style="width: {{ (actual / budget * 100)|round }}%;">
                     </div>
 
                 {% else %}
