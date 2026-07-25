@@ -107,17 +107,6 @@ Calculates monthly income, expenses, and net cash flow:
 Net Cash Flow = Income - Expenses
 ```
 
-### SQL Techniques Used
-
-The project uses:
-
-* Aggregate functions
-* `CASE` expressions
-* `COALESCE`
-* Common Table Expressions (CTEs)
-* Date formatting and monthly aggregation
-* Parameterized queries
-
 ---
 
 ## Database Design
