@@ -16,11 +16,11 @@
          row, so the list doesn't jump under the user. #}
       <div class="suggest">
         {% if t.suggestion %}
-          {# Shown however unsure the guess is — the percentage carries that,
+          {# Shown however unsure the guess is - the percentage carries that,
              and a dimmed chip below the suggest threshold makes a weak guess
              look weak instead of hiding it. #}
           <button class="btn btn-suggest btn-sm {{ '' if t.suggestion.should_suggest else 'low' }}"
-                  title="Suggested from {{ t.suggestion.source }} — click to accept"
+                  title="Suggested from {{ t.suggestion.source }} - click to accept"
                   hx-post="{{ url_for('transactions_categorize', transaction_id=t.transaction_id) }}"
                   hx-vals='{"category_id": "{{ t.suggestion.category_id }}"}'
                   hx-target="#tx-row-{{ t.transaction_id }}"
@@ -63,7 +63,7 @@
               hx-swap="outerHTML"
               hx-include="#tx-filters">Delete</button>
     {% else %}
-      <span class="faint" style="font-size: 0.75rem;" title="Seeded from the source data — read only">imported</span>
+      <span class="faint" style="font-size: 0.75rem;" title="Seeded from the source data - read only">imported</span>
     {% endif %}
   </td>
 </tr>

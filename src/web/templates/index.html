@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Components — Analytics Dashboard{% endblock %}
+{% block title %}Components - Analytics Dashboard{% endblock %}
 
 {% block content %}
 
@@ -9,14 +9,14 @@
     A shared starting point for the look and feel. Everything here is built from
     the classes in <code class="mono">static/css/styles.css</code>. The
     <span class="badge">HTMX sample</span> pieces below talk to Flask and swap in
-    server-rendered fragments — the same pattern the real Dashboard and
+    server-rendered fragments - the same pattern the real Dashboard and
     Transactions pages will use.
   </p>
 </div>
 
 <!-- ============================ KPIs ================================= -->
 <div class="section">
-  <div class="section-label">KPI tiles — for the dashboard's headline numbers</div>
+  <div class="section-label">KPI tiles - for the dashboard's headline numbers</div>
   <div class="grid cols-4">
     <div class="card kpi">
       <span class="kpi-label">Total spending</span>
@@ -66,7 +66,7 @@
     <div class="card">
       <h3>Live budget <span class="badge">HTMX</span></h3>
       <p class="faint" style="font-size: 0.85rem;">
-        Drag the slider — each change POSTs to Flask and swaps the bar back in.
+        Drag the slider - each change POSTs to Flask and swaps the bar back in.
       </p>
       {% include "partials/_budget.html" %}
     </div>
@@ -75,7 +75,7 @@
 
 <!-- ============================ Badges ============================== -->
 <div class="section">
-  <div class="section-label">Badges — transaction classes &amp; status</div>
+  <div class="section-label">Badges - transaction classes &amp; status</div>
   <div class="card">
     <div class="row">
       <span class="badge income">Income</span>
@@ -158,7 +158,7 @@
   <div class="grid cols-2">
     <div class="card">
       <div class="card-header"><h3>Counter</h3><span class="badge">HTMX</span></div>
-      <p class="faint" style="font-size: 0.85rem;">The classic — each button POSTs and re-renders the widget.</p>
+      <p class="faint" style="font-size: 0.85rem;">The classic - each button POSTs and re-renders the widget.</p>
       {% include "partials/_counter.html" %}
     </div>
 

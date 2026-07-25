@@ -1,5 +1,3 @@
-"""Tiered transaction categorizer."""
-
 from __future__ import annotations
 
 import math
@@ -355,7 +353,7 @@ class Categorizer:
             counts = self._memory.get(scope, {}).get(key)
             quality = 1.0
             if not counts:
-                # Exact miss — try a respacing first, then a partial rename.
+                # Exact miss - try a respacing first, then a partial rename.
                 fallback = self._compact_match(scope, key) or self._subset_match(scope, key)
                 if fallback is None:
                     continue

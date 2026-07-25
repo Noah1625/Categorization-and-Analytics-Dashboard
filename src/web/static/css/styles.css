@@ -1,5 +1,5 @@
 /* =========================================================================
-   Categorization & Analytics Dashboard — shared design system
+   Categorization & Analytics Dashboard - shared design system
    -------------------------------------------------------------------------
    One place for the visual language: design tokens (CSS variables) up top,
    then components. Prefer composing these classes over writing new CSS so
@@ -255,11 +255,11 @@ a:hover { text-decoration: underline; }
 
 /* ---- Category suggestion ------------------------------------------------
    Shown in the category cell of an uncategorized row. The chip is a dashed,
-   tentative pill so it never reads as a category the user already chose —
+   tentative pill so it never reads as a category the user already chose -
    accepting it is a deliberate click.
 
    Both children are scoped under .suggest so they beat the base .btn and
-   .select rules on specificity rather than source order — .btn sets a
+   .select rules on specificity rather than source order - .btn sets a
    transparent border and .select sets width:100%, and either one silently
    undoes this block if it happens to come later in the file.
 */
@@ -320,7 +320,7 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 0 0 3px var(--c-primary-soft);
 }
 
-/* A wrapping, scrollable grid of checkboxes — the category filter. */
+/* A wrapping, scrollable grid of checkboxes - the category filter. */
 .checkbox-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

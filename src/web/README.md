@@ -1,8 +1,8 @@
 # Web (Flask + HTMX)
 
 A small Flask app that serves the shared **component / style guide** page and a
-few live HTMX demos. It runs on its own with in-memory sample data — no database
-required — so it's a safe sandbox for agreeing on the look and feel before the
+few live HTMX demos. It runs on its own with in-memory sample data - no database
+required - so it's a safe sandbox for agreeing on the look and feel before the
 real Dashboard and Transactions pages get built.
 
 ## Run
@@ -24,7 +24,7 @@ Then open <http://127.0.0.1:5000/>.
 web/
   app.py                 # Flask routes: the pages + HTMX fragment endpoints
   sample_data.py         # In-memory demo data (component page only)
-  static/css/styles.css  # The design system — tokens + components
+  static/css/styles.css  # The design system - tokens + components
   templates/
     base.html            # Layout, nav, loads HTMX + the stylesheet
     index.html           # The component showcase
@@ -46,14 +46,14 @@ which share one WHERE builder so the rows and the total always agree. Filters
 live in `#tx-filters`; the add form, the pager, and Delete all `hx-include` it
 so whatever comes back is filtered the same way.
 
-Only rows the app created can be edited or deleted — `transactions.is_user_created`
+Only rows the app created can be edited or deleted - `transactions.is_user_created`
 is `TRUE` on insert and `FALSE` for everything `seed.py` loads. The guard is in
 the SQL (`AND is_user_created`), not just the template, so a hand-made request
 can't touch the source data either; those routes answer `403` and re-render the
 row untouched.
 
 The date range defaults to the newest month that has data rather than today's
-month, since the dataset is historical — see `_default_range()` in `app.py`.
+month, since the dataset is historical - see `_default_range()` in `app.py`.
 
 ## The design system
 
@@ -62,19 +62,19 @@ tokens** (CSS variables for colors, spacing, radius, shadow) and includes a dark
 theme via `prefers-color-scheme`. Build new UI by composing the existing classes
 so the app stays consistent:
 
-- **Layout** — `.container`, `.section`, `.grid.cols-2|3|4`, `.row`, `.card`
-- **Numbers** — `.kpi` tiles (`.kpi-label` / `.kpi-value` / `.kpi-delta`)
-- **Progress** — `.progress` + `.bar` (`.expense` / `.income` / `.warn` / `.over`)
-- **Badges** — `.badge` (`.income` / `.expense` / `.transfer` / `.warn`)
-- **Buttons** — `.btn` (`.btn-primary` / `.btn-secondary` / `.btn-ghost` / `.btn-danger`)
-- **Forms** — `.field` + `.input` / `.select`
-- **Tables** — `table.data`
+- **Layout** - `.container`, `.section`, `.grid.cols-2|3|4`, `.row`, `.card`
+- **Numbers** - `.kpi` tiles (`.kpi-label` / `.kpi-value` / `.kpi-delta`)
+- **Progress** - `.progress` + `.bar` (`.expense` / `.income` / `.warn` / `.over`)
+- **Badges** - `.badge` (`.income` / `.expense` / `.transfer` / `.warn`)
+- **Buttons** - `.btn` (`.btn-primary` / `.btn-secondary` / `.btn-ghost` / `.btn-danger`)
+- **Forms** - `.field` + `.input` / `.select`
+- **Tables** - `table.data`
 
 ## How the HTMX pattern works
 
 Each interactive element issues an `hx-post`/`hx-get` to Flask; the route renders
 a **partial** (a fragment from `templates/partials/`) and HTMX swaps it into the
-DOM. State is passed in the form so endpoints stay stateless — the exception is
+DOM. State is passed in the form so endpoints stay stateless - the exception is
 the transactions list, kept in memory so added rows persist for the session.
 
 When wiring the real pages, replace `sample_data.py` calls in `app.py` with the

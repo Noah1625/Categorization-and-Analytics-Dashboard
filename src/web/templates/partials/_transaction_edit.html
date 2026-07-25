@@ -1,5 +1,5 @@
-{# The same row, swapped into an inline edit form. There's no <form> element —
-   a form can't legally wrap <td>s — so Save gathers the inputs with
+{# The same row, swapped into an inline edit form. There's no <form> element -
+   a form can't legally wrap <td>s - so Save gathers the inputs with
    hx-include="closest tr" instead. #}
 <tr id="tx-row-{{ t.transaction_id }}" class="editing">
   <td><input class="input" type="date" name="transaction_date" value="{{ t.transaction_date }}"></td>

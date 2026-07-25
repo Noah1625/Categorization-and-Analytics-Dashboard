@@ -186,7 +186,7 @@ def _default_range() -> tuple[str, str]:
     """First/last day of the default month for the date-range filter.
 
     The seeded dataset is historical, so "current month" means the most recent
-    month that actually has transactions — today's month is only used when the
+    month that actually has transactions - today's month is only used when the
     table is empty. Swap ``months[-1]`` for ``date.today()`` to make it literal.
     """
     months = available_months()
@@ -206,7 +206,7 @@ def _read_filters(default_start: str | None = None,
                   default_end: str | None = None) -> dict[str, object]:
     """Pull the filter values out of the query string.
 
-    Defaults apply only when the key is *absent* — once the filter form has
+    Defaults apply only when the key is *absent* - once the filter form has
     been submitted an empty date means the user deliberately cleared it.
     ``request.values`` covers both the query string (GET filter/paging) and the
     form body (the add form, which hx-includes the filters).
@@ -272,7 +272,7 @@ def transactions():
 
 @app.get("/transactions/list")
 def transactions_list():
-    """The filtered/paged list on its own — the HTMX swap target."""
+    """The filtered/paged list on its own - the HTMX swap target."""
     filters = _read_filters()
     return render_template(
         "partials/_transaction_list.html",
@@ -357,7 +357,7 @@ def transactions_edit_form(transaction_id: int):
 
 @app.get("/transactions/<int:transaction_id>")
 def transactions_row(transaction_id: int):
-    """The read-only row — used to cancel out of the edit form."""
+    """The read-only row - used to cancel out of the edit form."""
     t = get_transaction(transaction_id)
     if t is None:
         return "", 404
@@ -384,7 +384,7 @@ def transactions_update(transaction_id: int):
     if t is None:
         return "", 404
     # An edit that set a category is the strongest signal there is. Clearing
-    # one teaches nothing — the user is saying "not yet", not "not this".
+    # one teaches nothing - the user is saying "not yet", not "not this".
     if category_id is not None:
         record_correction(
             description=description,

@@ -1,19 +1,8 @@
-"""Process-wide categorizer, rebuilt from the database at startup.
-
-The learned state lives in memory only. That keeps the schema unchanged and the
-prototype simple: history in Postgres is the source of truth, and a restart
-replays it. The tradeoff is that corrections made this session are folded into
-the model on the next boot rather than persisted as their own artifact.
-"""
-
 from __future__ import annotations
 
 import threading
 
 from .categorizer import Categorizer, Prediction
-
-# Database imports stay inside the functions so the categorizer itself can be
-# imported (and evaluated against CSVs) without Postgres running.
 
 _categorizer: Categorizer | None = None
 _lock = threading.Lock()
@@ -53,11 +42,7 @@ def _load_all_transactions() -> list[object]:
 
 
 def get_categorizer() -> Categorizer:
-    """Return the shared categorizer, training it on first use.
-
-    Double-checked under a lock so two concurrent requests during a cold start
-    don't each pay for a full fit.
-    """
+    """Return the shared categorizer, training it on first use."""
     global _categorizer
     if _categorizer is None:
         with _lock:
@@ -94,11 +79,7 @@ def record_correction(
     category_id: int,
     transaction_date: object = None,
 ) -> None:
-    """Teach the categorizer from a category the user chose or fixed.
-
-    Call this from the create/update transaction handlers. It takes effect on
-    the very next prediction.
-    """
+    """Teach the categorizer from a category the user chose or fixed."""
     get_categorizer().learn(
         description=description,
         transaction_code=transaction_code,

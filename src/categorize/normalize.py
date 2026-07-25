@@ -1,5 +1,3 @@
-"""Turn raw bank text into a stable merchant key."""
-
 from __future__ import annotations
 
 import re
