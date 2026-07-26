@@ -25,8 +25,6 @@ def get_recent_transactions(limit: int = 10) -> list[Transaction]:
     cur: cursor
     with get_connection() as conn:
         with conn.cursor() as cur:
-            # %s placeholders are filled by psycopg2 - this is how you avoid
-            # SQL injection; never build the value into the string yourself.
             cur.execute(
                 """
                 SELECT transaction_date, amount, description, transaction_type,
