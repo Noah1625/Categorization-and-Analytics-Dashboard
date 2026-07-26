@@ -58,6 +58,8 @@ Dashboard Development
 
 The dashboard provides a high-level overview of personal spending and budget performance.
 
+
+
 ### Key Performance Indicators
 
 The dashboard includes:
@@ -69,6 +71,8 @@ The dashboard includes:
 * **Month-over-Month Spending Change**
 
 The dashboard can be filtered by time period and category, allowing the displayed metrics and visualizations to update based on the selected data.
+
+![Dashboard](assets/Screenshot%202026-07-25%20223444.png)
 
 ---
 
@@ -87,6 +91,10 @@ Budget visualizations indicate whether spending is:
 * Within the allocated budget
 * Approaching the budget limit
 * Over budget
+
+![Dashboard](assets/Screenshot%202026-07-25%20223609.png)
+
+![Dashboard](assets/Screenshot%202026-07-25%20223628.png)
 
 ---
 
@@ -109,6 +117,10 @@ Stored Categorization Pattern
      ↓
 Improved Future Suggestions
 ```
+
+![Categorization](assets/Screenshot%202026-07-25%20223657.png)
+
+![Categorization](assets/Screenshot%202026-07-25%20223713.png)
 
 ---
 
