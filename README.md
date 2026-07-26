@@ -120,7 +120,7 @@ Improved Future Suggestions
 
 ![Categorization](assets/Screenshot%202026-07-25%20223657.png)
 
-![Categorization](assets/Screenshot%202026-07-25%20223945.png)
+![Categorization](assets/Screenshot%202026-07-25%20225945.png)
 
 ---
 
