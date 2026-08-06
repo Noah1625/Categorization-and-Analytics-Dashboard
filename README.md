@@ -6,7 +6,7 @@ The project transforms raw financial transaction data into an interactive Postgr
 
 ## Overview
 
-This project was built to explore the process of transforming raw financial transaction data into a structured analytical application.
+This project was built to explore the process of transforming raw financial transaction data into an analytical application.
 
 The application:
 
@@ -56,7 +56,7 @@ Dashboard Development
 
 ## Dashboard
 
-The dashboard provides a high-level overview of personal spending and budget performance.
+The dashboard provides an overview of personal spending and budget performance.
 
 
 
@@ -194,7 +194,7 @@ Stores individual financial transactions.
 | `category_id`      | Category reference      |
 | `transaction_code` | Transaction identifier  |
 
-The database uses relationships between transactions, categories, and budgets to support the analytical queries powering the dashboard.
+The database uses relationships between transactions, categories, and budgets to support the queries powering the dashboard.
 
 ---
 
