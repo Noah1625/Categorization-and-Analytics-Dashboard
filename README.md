@@ -254,49 +254,6 @@ Dashboard UI
 
 ---
 
-## Project Structure
-
-```text
-Categorization-and-Analytics-Dashboard/
-│
-├── docker-compose.yml
-├── requirements.txt
-├── README.md
-│
-└── src/
-    │
-    ├── main.py
-    ├── queries.py
-    ├── schema.py
-    ├── seed.py
-    │
-    ├── db/
-    │   └── connection.py
-    │
-    ├── entities/
-    │   ├── budgets.py
-    │   ├── categories.py
-    │   └── transactions.py
-    │
-    └── web/
-        │
-        ├── app.py
-        ├── sample_data.py
-        │
-        ├── static/
-        │   └── css/
-        │       └── styles.css
-        │
-        └── templates/
-            ├── base.html
-            ├── dashboard.html
-            ├── transactions.html
-            │
-            └── partials/
-```
-
----
-
 ## Running
 
 Requires [Docker](https://www.docker.com/) with Docker Compose.
